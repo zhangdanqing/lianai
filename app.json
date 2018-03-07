@@ -5,7 +5,7 @@
 	"window": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "演示",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#f95b5c",
+		"backgroundColor": "#f95b5c"
 	}
 }
