@@ -5,21 +5,7 @@ page {
   font-size: 32rpx;
   line-height: 1.6;
 }
-checkbox, radio{
-  margin-right: 10rpx;
-}
-button{
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
-}
-form{
-  width: 100%;
-}
-
-/* lib */
-.strong{
-  font-weight: bold;
-}
-.tc{
-  text-align: center;
+input,view,picker,text{
+    padding: 0;
+    margin:0;
 }

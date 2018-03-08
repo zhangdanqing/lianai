@@ -1,11 +1,12 @@
 {
 	"pages": [
-		"page/index/index"
+		"page/index/index",
+		"page/regist/regist"
 	],
 	"window": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "演示",
+		"navigationBarTitleText": "链爱",
 		"navigationBarBackgroundColor": "#f95b5c",
-		"backgroundColor": "#f95b5c"
+		"navigationBarTextStyle":"white"
 	}
 }

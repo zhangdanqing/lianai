@@ -1,0 +1,78 @@
+<view class="regist">
+    <text class="title">填写信息 成为链爱会员</text>
+    <view class="block"></view>
+    <view class="content">
+        <view class="section">
+            <view class="section__title">请选择出生日期</view>
+            <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+                <view class="picker">
+                    当前选择: {{date}}
+                </view>
+            </picker>
+        </view>
+        <view class="section">
+            <view class="section__title">请选择籍贯</view>
+            <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                <view class="picker">
+                    当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
+                </view>
+            </picker>
+        </view>
+        <view class="section">
+            <view class="section__title">请输入您所在行业</view>
+            <input placeholder-class="placeholder" placeholder="选填"/>
+        </view>
+        <view class="section">
+            <view class="section__title">请选择年收入</view>
+            <picker bindchange="bindPickerChange" value="{{income}}" range="{{incomeArray}}">
+                <view class="picker">
+                    当前选择：{{incomeArray[income]}}
+                </view>
+            </picker>
+        </view>
+        <view class="section">
+            <view class="section__title">请选择学历</view>
+            <picker bindchange="bindPickerChange" value="{{education}}" range="{{educationArray}}">
+                <view class="picker">
+                    当前选择：{{educationArray[education]}}
+                </view>
+            </picker>
+        </view>
+        <view class="section">
+            <view class="section__title">请输入您毕业院校</view>
+            <input placeholder-class="placeholder" placeholder="选填"/>
+        </view>
+        <view class="section">
+            <view class="section__title">请输入您身高</view>
+            <input placeholder-class="placeholder" placeholder="选填"/>
+        </view>
+        <view class="section">
+            <view class="section__title">请输入您的名族</view>
+            <input placeholder-class="placeholder" placeholder="选填"/>
+        </view>
+        <view class="section">
+            <view class="section__title">请输入您的婚姻状况</view>
+            <input placeholder-class="placeholder" placeholder="选填"/>
+        </view>
+        <view class="section">
+            <view class="section__title">购房状况</view>
+            <picker bindchange="bindPickerChange" value="{{purchase}}" range="{{booleanArray}}">
+                <view class="picker">
+                    当前选择：{{booleanArray[purchase]}}
+                </view>
+            </picker>
+        </view>
+        <view class="section">
+            <view class="section__title">购车状况</view>
+            <picker bindchange="bindPickerChange" value="{{carBuying}}" range="{{booleanArray}}">
+                <view class="picker">
+                    当前选择：{{booleanArray[carBuying]}}
+                </view>
+            </picker>
+        </view>
+        <view class="section">
+            <view class="section__title">请填写您的交友条件</view>
+            <textarea placeholder-class="placeholder" placeholder="选填"/>
+        </view>
+    </view>
+</view>
