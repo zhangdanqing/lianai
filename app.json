@@ -6,7 +6,7 @@
 	"window": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "链爱",
-		"navigationBarBackgroundColor": "#f95b5c",
-		"navigationBarTextStyle":"white"
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTextStyle":"black"
 	}
 }

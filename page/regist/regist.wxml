@@ -1,4 +1,5 @@
 <view class="regist">
+    <image class="banner" mode="aspectFill" src="../../img/banner1.png"></image>
     <text class="title">填写信息 成为链爱会员</text>
     <view class="block"></view>
     <view class="content">

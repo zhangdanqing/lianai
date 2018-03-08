@@ -1,11 +1,16 @@
+.banner{
+    width:100%;
+    display: block;
+}
 .title{
     font-size: 40rpx;
-    height:160rpx;
-    line-height: 160rpx;
+    height:150rpx;
+    line-height: 150rpx;
     text-align: center;
     width:100%;
     display: block;
     text-align: center;
+    color: #391635;
 }
 .block{
     height:26rpx;
