@@ -27,3 +27,28 @@ picker,input,.placeholder,.textarea{
     font-size: 32rpx;
     color:#6a6a6a;
 }
+.regist-btn{
+    background:#f95b5c;
+    color:#fff;
+    margin-bottom:115rpx;
+}
+.checkbox{
+    margin-bottom:42rpx;
+    margin-top: 62rpx;
+}
+checkbox{
+    margin-right: 12rpx;
+}
+checkbox,.agree{
+    float: left;
+}
+.checkbox view{
+    font-size: 32rpx;
+    color:#6a6a6a;
+    display: inline-block;
+    padding-top: 2rpx;
+}
+.checkbox view navigator{
+    display: inline-block;
+    color:#334c83;
+}
