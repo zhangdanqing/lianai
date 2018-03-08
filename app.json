@@ -1,12 +1,35 @@
 {
 	"pages": [
 		"page/index/index",
-		"page/regist/regist"
+		"page/regist/regist",
+		"page/mine/mine",
+		"page/search/search"
 	],
 	"window": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "链爱",
-		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTextStyle":"black"
-	}
+		"navigationBarBackgroundColor": "#f95b5c",
+		"navigationBarTextStyle":"white"
+	},
+	"tabBar":{
+    "color":"#8a8a8a",
+    "selectedColor":"#f95b5c",
+    "position":"bottom",
+    "backgroundColor": "#fff",
+    "borderStyle": "#ccc",
+    "list":[
+      {
+        "pagePath":"page/index/index",
+        "text":"首页",
+        "selectedIconPath":"img/index-after.png",
+        "iconPath":"img/index-before.png"
+      },
+      {
+        "pagePath":"page/mine/mine",
+        "text":"我的",
+        "selectedIconPath":"img/account-after.png",
+        "iconPath":"img/account-before.png"
+      }
+    ]
+  }
 }

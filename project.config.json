@@ -26,12 +26,24 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "regist",
-					"pathName": "page/regist/regist"
+					"pathName": "page/regist/regist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "search",
+					"pathName": "page/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mine",
+					"pathName": "page/mine/mine"
 				}
 			]
 		}

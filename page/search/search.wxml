@@ -1,0 +1,13 @@
+<form bindsubmit="formSubmit" style="height:30rpx;width:100%;">
+    <view class="home-box home-box-new">
+        <view class="search-box search-box-new">
+            <icon type="search" size="12"/>
+            <input name="searchData" value="{{inputSearch}}" focus="{{focus}}" placeholder="请输入您要搜索的名字" placeholder-class="search-place" bindinput="onInp" bindfocus="focusInp" bindblur="blurInp" bindconfirm="confirmRequest"/>
+            <icon wx:if="{{clearIcon}}" class="clear-btn" type="clear" size="14" bindtap="clearContent"/>
+        </view>
+        <view class="search-btn">搜索</view>
+    </view>
+</form>
+<view class="search-list">
+    <text class="search-title">搜索列表</text>
+</view>

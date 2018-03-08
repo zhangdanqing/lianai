@@ -1,0 +1,34 @@
+.search-box icon.clear-btn{
+    padding-right:25rpx;
+}
+.book-search-list{
+    padding: 30rpx 40rpx;
+}
+.search-box-new{
+    width:82%;
+    margin-right:20rpx;
+}
+.search-btn{
+    flex: 1;
+    font-size: 32rpx;
+    color:#f95b5c;
+    padding:0;
+    text-align: center;
+    line-height:70rpx;
+}
+.search-btn::after {
+    content:normal;
+    border:none;
+}
+.home-box-new.home-box{
+    display: flex;
+    padding:30rpx 30rpx;
+}
+.search-list{
+    padding: 0 65rpx;
+}
+.search-title{
+    font-size: 36rpx;
+    color:#111;
+    padding: 53rpx 0 78rpx;
+}

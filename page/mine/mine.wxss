@@ -1,0 +1,42 @@
+.header-personal{
+	background:#f95b5c;
+	text-align:center;
+	padding-top:50rpx;
+	padding-bottom:35rpx;
+}
+.head-portrait{
+	width:150rpx;
+	height:150rpx;
+	text-align:center;
+	margin-bottom:16rpx;
+	border-radius: 50%;
+}
+.name{
+	font-size:32rpx;
+	color:#fff;
+	display: block;
+}
+.personal-list-box{
+	background:#fff;
+}
+.sign-out-icon{
+	width:32rpx;
+	height:32rpx;
+	margin-right:20rpx;
+}
+.sign-out{
+	font-size:32rpx;
+	line-height:32rpx;
+	color:#515151;
+}
+.personal-list{
+	border-bottom:2rpx solid #ededed;
+	padding:30rpx 60rpx;
+}
+.personal-title{
+	height:90rpx;
+	font-size:32rpx;
+	padding-left:60rpx;
+	line-height:90rpx;
+	color:#f95b5c;
+}

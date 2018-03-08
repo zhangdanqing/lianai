@@ -73,7 +73,7 @@
         </view>
         <view class="section">
             <view class="section__title">请填写您的交友条件</view>
-            <textarea placeholder-class="placeholder" placeholder="选填"/>
+            <textarea placeholder-class="placeholder" placeholder="选填" auto-height/>
         </view>
         <view class="checkbox clearfix">
             <checkbox color="#f95b5c" checked="true"/>
