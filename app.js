@@ -33,7 +33,7 @@ App({
                 // var province = userInfo.province
                 // var city = userInfo.city
                 // var country = userInfo.country
-                console.log(res.userInfo);
+                console.log(1111,res.userInfo);
                 wx.setStorageSync('userName',res.userInfo.nickName);
                 wx.setStorageSync('avatarUrl',res.userInfo.avatarUrl);
             }

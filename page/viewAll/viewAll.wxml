@@ -1,0 +1,78 @@
+<view class="view-all">
+    <!-- <view class="head-detail">
+        <image class="head-photo" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
+    </view>
+    <text class="name">苗子请</text>
+    <view class="infor-content">
+        <view class="basic-infor">
+            <text class="infor-title">基本资料</text>
+            <view>
+                <text></text>
+            </view>
+        </view>
+    </view> -->
+
+
+    <view class="header clearfix">
+        <image class="head-photo" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
+        <view class="header-infor">
+            <text class="header-infor-title">苗子请</text>
+            <view class="infor-list">
+                <text>石家庄</text>
+                <text>32岁</text>
+            </view>
+        </view>
+    </view>
+    <view class="infor-content">
+        <view class="basic-infor">
+            <view class="infor-title-box">
+                <text class="infor-title">基本资料</text>
+            </view>
+            <view class="infor-body basic-body clearfix">
+                <text>未婚</text>
+                <text>34</text>
+                <text>石家庄</text>
+            </view>
+        </view>
+    </view>
+    <view class="infor-content">
+        <view class="basic-infor">
+            <view class="infor-title-box">
+                <text class="infor-title">相册</text>
+            </view>
+            <view class="infor-body">
+                
+            </view>
+        </view>
+    </view>
+    <view class="infor-content">
+        <view class="basic-infor">
+            <view class="infor-title-box">
+                <text class="infor-title">恋爱宣言</text>
+            </view>
+            <view class="infor-body">
+                <text>谈一场不分手的恋爱，结一次永远不离的婚</text>
+            </view>
+        </view>
+    </view>
+    <view class="infor-content">
+        <view class="basic-infor">
+            <view class="infor-title-box">
+                <text class="infor-title">兴趣爱好</text>
+            </view>
+            <view class="infor-body">
+                <text>谈一场不分手的恋爱，结一次永远不离的婚</text>
+            </view>
+        </view>
+    </view>
+    <view class="infor-content">
+        <view class="basic-infor">
+            <view class="infor-title-box">
+                <text class="infor-title">择偶条件</text>
+            </view>
+            <view class="infor-body">
+                <text>谈一场不分手的恋爱，结一次永远不离的婚</text>
+            </view>
+        </view>
+    </view>
+</view>

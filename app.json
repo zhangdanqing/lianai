@@ -3,7 +3,8 @@
 		"page/index/index",
 		"page/regist/regist",
 		"page/mine/mine",
-		"page/search/search"
+		"page/search/search",
+		"page/viewAll/viewAll"
 	],
 	"window": {
 		"navigationBarTextStyle": "black",

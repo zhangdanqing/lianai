@@ -1,0 +1,15 @@
+.slide-image{
+    width:100%;
+}
+.index-box{
+    position: relative;
+}
+.search-home-box{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    z-index: 1;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}

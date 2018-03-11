@@ -1,13 +1,27 @@
-<form bindsubmit="formSubmit" style="height:30rpx;width:100%;">
-    <view class="home-box home-box-new">
-        <view class="search-box search-box-new">
-            <icon type="search" size="12"/>
-            <input name="searchData" value="{{inputSearch}}" focus="{{focus}}" placeholder="请输入您要搜索的名字" placeholder-class="search-place" bindinput="onInp" bindfocus="focusInp" bindblur="blurInp" bindconfirm="confirmRequest"/>
-            <icon wx:if="{{clearIcon}}" class="clear-btn" type="clear" size="14" bindtap="clearContent"/>
-        </view>
-        <view class="search-btn">搜索</view>
+<view class="home-box home-box-new">
+    <view class="search-box search-box-new">
+        <icon type="search" size="12" />
+        <input name="searchData" value="{{inputSearch}}" focus="{{focus}}" placeholder="请输入您要搜索的名字" placeholder-class="search-place" bindinput="onInp" bindfocus="focusInp" bindblur="blurInp" bindconfirm="confirmRequest" />
+        <icon wx:if="{{clearIcon}}" class="clear-btn" type="clear" size="14" bindtap="clearContent" />
     </view>
-</form>
+    <view class="search-btn">搜索</view>
+</view>
+<text class="search-title">搜索列表</text>
 <view class="search-list">
-    <text class="search-title">搜索列表</text>
+    <view class="search-list-li clearfix" bindtap="viewAll">
+        <image class="head-portrait" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
+        <view class="information">
+            <text class="name">苗自强</text>
+            <text class="adress">住址就是多少机会的</text>
+            <text class="year-old">46岁</text>
+        </view>
+    </view>
+    <view class="search-list-li clearfix" bindtap="viewAll">
+        <image class="head-portrait" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
+        <view class="information">
+            <text class="name">苗自强</text>
+            <text class="adress">住址就是多少机会的</text>
+            <text class="year-old">46岁</text>
+        </view>
+    </view>
 </view>

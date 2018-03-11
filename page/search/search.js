@@ -13,6 +13,11 @@ let pageObject = {
     onReady: function() {
 
     },
+    viewAll:function(){
+        wx.navigateTo({
+            url:'../viewAll/viewAll'
+        })
+    }
     // onLoad: function(options) {
     //     if(options.label)
     //     {
