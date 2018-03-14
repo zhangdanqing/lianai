@@ -6,7 +6,7 @@
         </view>
     </view>
 
-    <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,0.7)" indicator-active-color="rgba(255,255,255,0.95)" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,0.7)" indicator-active-color="rgba(255,255,255,0.95)" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
         <block wx:for="{{imgUrls}}">
             <swiper-item>
                 <image mode="aspectFill" src="{{item}}" class="slide-image"/>

@@ -2,13 +2,14 @@ let pageObject = {
     data: {
         date: '2016-09-01',
         region: ['广东省', '广州市', '海珠区'],
-        income:0,
-        incomeArray:['15万以下','15-30万','30万以上'],
-        education:0,
-        educationArray:['专科及以下','本科','硕士','博士','其他'],
-        booleanArray:['是','否'],
-        purchase:0,
-        carBuying:0,
+        income: 0,
+        incomeArray: ['15万以下', '15-30万', '30万以上'],
+        education: 0,
+        educationArray: ['专科及以下', '本科', '硕士', '博士', '其他'],
+        booleanArray: ['是', '否'],
+        purchase: 0,
+        carBuying: 0,
+        tempFilePaths:[],
     },
     onShow: function() {
 
@@ -26,6 +27,16 @@ let pageObject = {
         console.log('picker发送选择改变，携带值为', e.detail.value)
         this.setData({
             region: e.detail.value
+        })
+    },
+    uploadPhoto: function() {
+        wx.chooseImage({
+            success:(res)=>{
+                var tempFilePaths = res.tempFilePaths
+                this.setData({
+                    tempFilePaths: res.tempFilePaths
+                })
+            }
         })
     }
     // prepay: function() {

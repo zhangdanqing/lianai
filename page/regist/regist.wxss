@@ -57,3 +57,12 @@ checkbox,.agree{
     display: inline-block;
     color:#334c83;
 }
+.upload-photos{
+    border:1px solid red;
+    width:100rpx;
+    height:100rpx;
+}
+.upload-image{
+    width:200rpx;
+    height:200rpx;
+}
