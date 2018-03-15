@@ -58,11 +58,25 @@ checkbox,.agree{
     color:#334c83;
 }
 .upload-photos{
-    border:1px solid red;
-    width:100rpx;
-    height:100rpx;
+    width:150rpx;
+    height:150rpx;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left: -75rpx;
+    margin-top:-75rpx;
 }
 .upload-image{
     width:200rpx;
     height:200rpx;
+    margin-right: 20rpx;
+}
+.upload-image-box{
+    width:200rpx;
+    height:200rpx;
+    border:1px solid #e5e5e5;
+    background: #f7f6f2;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
 }

@@ -1,15 +1,69 @@
 let pageObject = {
     data: {
+        name:"",
         date: '2016-09-01',
-        region: ['广东省', '广州市', '海珠区'],
+        addressRegion: ['广东省', '广州市', '海珠区'],
+        originRegion: ['广东省', '广州市', '海珠区'],
+        industry:"",
+        occupation:"",
         income: 0,
-        incomeArray: ['15万以下', '15-30万', '30万以上'],
+        incomeArray: [{
+                id: 0,
+                name: '15万以下'
+            },
+            {
+                id: 1,
+                name: '15-30万'
+            },
+            {
+                id: 2,
+                name: '30万以上'
+            }
+        ],
+        height:"",
+        weight:"",
+        nation:"",
         education: 0,
-        educationArray: ['专科及以下', '本科', '硕士', '博士', '其他'],
-        booleanArray: ['是', '否'],
+        educationArray:[{
+                id: 0,
+                name: '专科及以下'
+            },
+            {
+                id: 1,
+                name: '本科'
+            },
+            {
+                id: 2,
+                name: '硕士'
+            },
+            {
+                id: 3,
+                name: '博士'
+            },
+            {
+                id: 4,
+                name: '其他'
+            },
+        ],
+        school:"",
+        maritalStatus:"",
+        booleanArray:[{
+                id: 0,
+                name: '是'
+            },
+            {
+                id: 1,
+                name: '否'
+            }
+        ],
         purchase: 0,
         carBuying: 0,
-        tempFilePaths:[],
+        mateSelection:"",
+        hobby:"",
+        declaration:"",
+        checkbox:"",
+        idTempFilePaths:[],
+        checkboxTempFilePaths:[],
     },
     onShow: function() {
 
@@ -17,27 +71,24 @@ let pageObject = {
     onReady: function() {
 
     },
-    bindDateChange: function(e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
+    bindPickerChange:function(e) {
+        let key=e.target.dataset.key;
         this.setData({
-            date: e.detail.value
+            [key]: e.detail.value
         })
     },
-    bindRegionChange: function(e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
-        this.setData({
-            region: e.detail.value
-        })
-    },
-    uploadPhoto: function() {
+    uploadPhoto: function(e) {
         wx.chooseImage({
             success:(res)=>{
-                var tempFilePaths = res.tempFilePaths
+                var tempFilePaths = e.target.dataset.arr;
                 this.setData({
-                    tempFilePaths: res.tempFilePaths
+                    [tempFilePaths]: res.tempFilePaths
                 })
             }
         })
+    },
+    formSubmit:function(e){
+        console.log(e.detail.value);
     }
     // prepay: function() {
     //     wx.request({
