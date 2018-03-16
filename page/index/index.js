@@ -28,6 +28,11 @@ let pageObject = {
         wx.navigateTo({
             url: '../search/search'
         })
+    },
+    viewAll:function(){
+        wx.navigateTo({
+            url: '../viewAll/viewAll'
+        })
     }
 }
 Page(pageObject)

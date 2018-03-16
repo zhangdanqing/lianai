@@ -7,10 +7,31 @@
     </view>
 
     <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,0.7)" indicator-active-color="rgba(255,255,255,0.95)" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-        <block wx:for="{{imgUrls}}">
+        <block wx:for="{{imgUrls}}" wx:key="*thiss">
             <swiper-item>
                 <image mode="aspectFill" src="{{item}}" class="slide-image"/>
             </swiper-item>
         </block>
     </swiper>
+
+    <view class="recommend-box">
+        <text class="recommend-title">今日推荐</text>
+        <view class="recommend-list clearfix">
+            <view class="recommend-list-item" bindtap="viewAll">
+                <image mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="slide-image"/>
+                <text class="title">金可言</text>
+                <text class="describ">29岁 自由职业</text>
+            </view>
+            <view class="recommend-list-item">
+                <image mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="slide-image"/>
+                <text class="title">金可言</text>
+                <text class="describ">29岁 自由职业</text>
+            </view>
+            <view class="recommend-list-item">
+                <image mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="slide-image"/>
+                <text class="title">金可言</text>
+                <text class="describ">29岁 自由职业</text>
+            </view>
+        </view>
+    </view>
 </view>

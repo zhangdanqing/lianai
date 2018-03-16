@@ -13,3 +13,44 @@
     padding-top: 20rpx;
     padding-bottom: 20rpx;
 }
+.recommend-box{
+    padding: 40rpx;
+}
+.recommend-title{
+    font-size: 34rpx;
+    display: block;
+    margin-bottom: 20rpx;
+}
+.recommend-list-item{
+    width:calc((100% - 30rpx)/2);
+    float: left;
+    box-sizing: border-box;
+    border-radius: 20rpx;
+    display: block;
+    margin-bottom: 30rpx;
+    background: #fff;
+    text-align: center;
+}
+.recommend-list-item:nth-child(odd){
+    margin-right:30rpx;
+}
+.recommend-list-item>image{
+    width:100%;
+    height:300rpx;
+    display: block;
+    margin-bottom: 15rpx;
+    border-radius: 20rpx 20rpx 0 0;
+}
+.recommend-list-item .title{
+    font-size: 32rpx;
+    text-align: center;
+    display: block;
+    margin-bottom: 10rpx;
+}
+.recommend-list-item .describ{
+    font-size: 30rpx;
+    text-align: center;
+    display: block;
+    margin-bottom: 20rpx;
+    color:#666;
+}
