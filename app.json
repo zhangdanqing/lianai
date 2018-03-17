@@ -4,7 +4,8 @@
 		"page/regist/regist",
 		"page/mine/mine",
 		"page/search/search",
-		"page/viewAll/viewAll"
+		"page/viewAll/viewAll",
+		"page/uploadPhotos/uploadPhotos"
 	],
 	"window": {
 		"navigationBarTextStyle": "black",

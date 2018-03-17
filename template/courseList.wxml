@@ -1,0 +1,9 @@
+<template name="toast-box">
+    <view class="toast-content">
+        <view class="toast-title">
+            <view class="toast-text">
+                <view>{{toastMsg}}</view>
+            </view>
+        </view>
+    </view>
+</template>

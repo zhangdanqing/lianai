@@ -51,6 +51,12 @@
 					"name": "viewAll",
 					"pathName": "page/viewAll/viewAll",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "uploadPhotos",
+					"pathName": "page/uploadPhotos/uploadPhotos",
+					"query": ""
 				}
 			]
 		}

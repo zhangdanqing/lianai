@@ -17,6 +17,7 @@ App({
                         },
                         success: function(res) {
                             console.log(res.data)
+                            wx.setStorageSync('openId', res.data.openid);
                         }
                     })
                 } else {
@@ -33,7 +34,7 @@ App({
                 // var province = userInfo.province
                 // var city = userInfo.city
                 // var country = userInfo.country
-                console.log(1111,res.userInfo);
+                //console.log(1111,res.userInfo);
                 wx.setStorageSync('userName',res.userInfo.nickName);
                 wx.setStorageSync('avatarUrl',res.userInfo.avatarUrl);
             }
@@ -47,6 +48,7 @@ App({
     },
     globalData: {
         hasLogin: false,
-        openid: null
+        domain: "https://www.lianaii.top:9147/sofaindb/ailian",
+        utilData: util,
     }
 })

@@ -1,39 +1,52 @@
-const domain = getApp().globalData.domain;
-const utilData = getApp().globalData.utilData;
 let pageObject = {
     data: {
         name:"",
-        date: '',
-        addressRegion: [],
-        originRegion: [],
+        date: '2016-09-01',
+        addressRegion: ['广东省', '广州市', '海珠区'],
+        originRegion: ['广东省', '广州市', '海珠区'],
         industry:"",
         occupation:"",
         income: 0,
-        incomeArray: ['15万以下','15-30万','30万以上'],
+        incomeArray: [{
+                id: 0,
+                name: '15万以下'
+            },
+            {
+                id: 1,
+                name: '15-30万'
+            },
+            {
+                id: 2,
+                name: '30万以上'
+            }
+        ],
         height:"",
         weight:"",
         nation:"",
         education: 0,
-        educationArray:['专科及以下','本科','硕士','博士','其他'],
-        school:"",
-        maritalStatus:0,
-        maritalArray:[{
+        educationArray:[{
                 id: 0,
-                name: '单身'
+                name: '专科及以下'
             },
             {
                 id: 1,
-                name: '已婚'
+                name: '本科'
             },
             {
                 id: 2,
-                name: '离异'
+                name: '硕士'
             },
             {
                 id: 3,
-                name: '丧偶'
-            }
+                name: '博士'
+            },
+            {
+                id: 4,
+                name: '其他'
+            },
         ],
+        school:"",
+        maritalStatus:"",
         booleanArray:[{
                 id: 0,
                 name: '是'
@@ -51,10 +64,6 @@ let pageObject = {
         checkbox:"",
         idTempFilePaths:[],
         checkboxTempFilePaths:[],
-        toastData: {
-            toastMsg: "",
-        },
-        isToastShow: false,
     },
     onShow: function() {
 
@@ -80,25 +89,6 @@ let pageObject = {
     },
     formSubmit:function(e){
         console.log(e.detail.value);
-        let dataObj=e.detail.value;
-        dataObj.openId=wx.setStorageSync('openId');
-        wx.request({
-            url: domain+'/register',
-            method: 'POST',
-            data: dataObj,
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function(res) {
-                console.log(res,'成功');
-            },
-            fail: function(err) {
-                this.toast('网络异常，请稍后再试');
-            }
-        })
-    },
-    toast: function(content) {
-        utilData.toast(content, 'toastData.toastMsg', 'isToastShow', this);
     }
     // prepay: function() {
     //     wx.request({

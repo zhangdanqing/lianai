@@ -30,7 +30,25 @@ function formatLocation(longitude, latitude) {
   }
 }
 
+//弹窗
+const toast = (content,toastText,isToastShow,that) => {
+    that.setData({
+        [toastText]:content,
+        isToastShow:true,
+    });
+    setTimeout(()=>{
+        closeToast(toastText,isToastShow,that);
+    },2000)
+}
+const closeToast = (toastText,isToastShow,that) => {
+    that.setData({
+        [toastText]:"",
+        isToastShow:false,
+    });
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatLocation: formatLocation
+  formatLocation: formatLocation,
+  toast:toast
 }
