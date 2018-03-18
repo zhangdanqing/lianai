@@ -47,7 +47,9 @@ let pageObject = {
             success: (res) => {
                 if (res.data && res.data.code === 0) {
                     if (res.data.data) {
-                        if (!res.data.dataisMember) {
+                        if (res.data.data.isMember) {
+                            
+                        }else{
                             this.setData({
                                 modalHidden: false
                             })

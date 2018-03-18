@@ -1,23 +1,35 @@
 const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
+let regName = /^[a-zA-Z0-9_\u4e00-\u9fa5]{1,12}$/;
 let pageObject = {
     data: {
-        name:"",
-        date: '',
+        name: "",
+        gender: "",
+        genderArrary: [{
+                id: 0,
+                name: "男",
+                // checked: 'true'
+            },
+            {
+                id: 1,
+                name: "女"
+            }
+        ],
+        date: "",
         addressRegion: [],
         originRegion: [],
-        industry:"",
-        occupation:"",
-        income: 0,
-        incomeArray: ['15万以下','15-30万','30万以上'],
-        height:"",
-        weight:"",
-        nation:"",
-        education: 0,
-        educationArray:['专科及以下','本科','硕士','博士','其他'],
-        school:"",
-        maritalStatus:0,
-        maritalArray:[{
+        industry: "",
+        occupation: "",
+        income: null,
+        incomeArray: ['15万以下', '15-30万', '30万以上'],
+        height: "",
+        weight: "",
+        nation: "",
+        education: null,
+        educationArray: ['专科及以下', '本科', '硕士', '博士', '其他'],
+        school: "",
+        maritalStatus: null,
+        maritalArray: [{
                 id: 0,
                 name: '单身'
             },
@@ -34,7 +46,7 @@ let pageObject = {
                 name: '丧偶'
             }
         ],
-        booleanArray:[{
+        booleanArray: [{
                 id: 0,
                 name: '是'
             },
@@ -43,14 +55,14 @@ let pageObject = {
                 name: '否'
             }
         ],
-        purchase: 0,
-        carBuying: 0,
-        mateSelection:"",
-        hobby:"",
-        declaration:"",
-        checkbox:"",
-        idTempFilePaths:[],
-        checkboxTempFilePaths:[],
+        purchase: null,
+        carBuying: null,
+        mateSelection: "",
+        hobby: "",
+        declaration: "",
+        checkbox: "",
+        idTempFilePaths: [],
+        checkboxTempFilePaths: [],
         toastData: {
             toastMsg: "",
         },
@@ -62,15 +74,20 @@ let pageObject = {
     onReady: function() {
 
     },
-    bindPickerChange:function(e) {
-        let key=e.target.dataset.key;
+    radioChange: function(e) {
+        this.setData({
+            gender: e.detail.value
+        })
+    },
+    bindPickerChange: function(e) {
+        let key = e.target.dataset.key;
         this.setData({
             [key]: e.detail.value
         })
     },
     uploadPhoto: function(e) {
         wx.chooseImage({
-            success:(res)=>{
+            success: (res) => {
                 var tempFilePaths = e.target.dataset.arr;
                 this.setData({
                     [tempFilePaths]: res.tempFilePaths
@@ -78,30 +95,84 @@ let pageObject = {
             }
         })
     },
-    formSubmit:function(e){
-        let dataObj=this.formatData(e.detail.value);
+    formSubmit: function(e) {
+        let dataObj = this.formatData(e.detail.value);
+        let name = e.detail.value.name;
+        if (name && name.toString().match(regName)) {
+        } else {
+            this.toast('请填写1-12位汉字或者数字或者字母的昵称');
+            return;
+        }
+        if( ! dataObj.gender){
+            this.toast('请填写性别');
+            return;
+        }
+        if( ! dataObj.date){
+            this.toast('请填写出生日期');
+            return;
+        }
+        if( ! dataObj.addressRegion){
+            this.toast('请填写所在地区');
+            return;
+        }
+        if( ! dataObj.originRegion){
+            this.toast('请填写籍贯');
+            return;
+        }
+        if( ! dataObj.industry){
+            this.toast('请填写您所在的行业');
+            return;
+        }
+        if( ! dataObj.occupation){
+            this.toast('请填写您的职业');
+            return;
+        }
+        if( ! dataObj.income){
+            this.toast('请填写年收入');
+            return;
+        }
+        if( ! dataObj.height){
+            this.toast('请填写身高');
+            return;
+        }
+        if( ! dataObj.education){
+            this.toast('请填写您的学历');
+            return;
+        }
+        if( ! dataObj.maritalStatus){
+            this.toast('请填写您当前婚姻状况');
+            return;
+        }
+        if( ! dataObj.purchase){
+            this.toast('请填写您当地购房状况');
+            return;
+        }
+        if( ! dataObj.carBuying){
+            this.toast('请填写您当地购车状况');
+            return;
+        }
         wx.request({
-            url: domain+'/register',
+            url: domain + '/register',
             method: 'POST',
             data: {
-                "data":dataObj
+                "data": dataObj
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
             success: function(res) {
-                if(res.data && res.data.code===0){
+                if (res.data && res.data.code === 0) {
                     wx.showToast({
                         title: '注册成功',
                         icon: 'succes',
                         duration: 1000,
                         mask: true
                     })
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         wx.redirectTo({
                             url: '../index/index'
                         })
-                    },1000)
+                    }, 1000)
                 }
             },
             fail: function(err) {
@@ -112,11 +183,12 @@ let pageObject = {
     toast: function(content) {
         utilData.toast(content, 'toastData.toastMsg', 'isToastShow', this);
     },
-    formatData:function(option){
-        let obj=option;
-        obj.openId=wx.setStorageSync('openId');
-        obj.addressRegion=obj.addressRegion.join(' ');
-        obj.originRegion=obj.originRegion.join(' ');
+    formatData: function(option) {
+        let obj = option;
+        obj.openId = wx.setStorageSync('openId');
+        obj.gender = this.data.gender;
+        obj.addressRegion = obj.addressRegion.join(' ');
+        obj.originRegion = obj.originRegion.join(' ');
         return JSON.stringify(obj);
     }
     // prepay: function() {

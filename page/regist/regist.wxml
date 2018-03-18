@@ -1,7 +1,7 @@
-<import src="../../template/courseList.wxml"/>
+<import src="../../template/courseList.wxml" />
 <view class="regist">
     <view wx-if="{{isToastShow}}">
-        <template is="toast-box" data="{{...toastData}}"/>
+        <template is="toast-box" data="{{...toastData}}" />
     </view>
     <image class="banner" mode="aspectFill" src="../../img/banner1.png"></image>
     <text class="title">填写信息 成为链爱会员</text>
@@ -10,11 +10,17 @@
         <form bindsubmit="formSubmit">
             <view class="section">
                 <view class="section__title">请输入昵称</view>
-                <input value="{{name}}" name="name" placeholder-class="placeholder" placeholder="选填" />
+                <input maxlength="12" value="{{name}}" name="name" placeholder-class="placeholder" placeholder="只支持中文英文大小写和数字" />
             </view>
+            <radio-group class="radio-group" bindchange="radioChange">
+                <view class="section__title">请输入选择性别</view>
+                <label class="radio" wx:for="{{genderArrary}}" wx:key="id">
+                    <radio value="{{item.id}}" checked="{{item.checked}}"/>{{item.name}}
+                </label>
+            </radio-group>
             <view class="section">
                 <view class="section__title">请选择出生日期</view>
-                <picker mode="date" value="{{date}}" name="date" data-key="date" bindchange="bindPickerChange" >
+                <picker mode="date" value="{{date}}" name="date" data-key="date" bindchange="bindPickerChange">
                     <view class="picker">
                         当前选择: {{date}}
                     </view>
@@ -38,14 +44,14 @@
             </view>
             <view class="section">
                 <view class="section__title">请输入您所在的行业</view>
-                <input value="{{industry}}" name="industry" placeholder-class="placeholder" placeholder="选填" />
+                <input value="{{industry}}" name="industry" placeholder-class="placeholder" placeholder="必填" />
             </view>
             <view class="section">
                 <view class="section__title">请输入您的职业</view>
-                <input value="{{occupation}}" name="occupation" placeholder-class="placeholder" placeholder="选填" />
+                <input value="{{occupation}}" name="occupation" placeholder-class="placeholder" placeholder="必填" />
             </view>
             <view class="section">
-                <view class="section__title">请选择年收入</view>
+                <view class="section__title">请选择您的年收入</view>
                 <picker mode="selector" data-key="income" bindchange="bindPickerChange" value="{{income}}" name="income" range="{{incomeArray}}">
                     <view class="picker">
                         当前选择：{{incomeArray[income]}}
@@ -54,7 +60,7 @@
             </view>
             <view class="section">
                 <view class="section__title">请输入身高</view>
-                <input value="{{height}}" name="height" placeholder-class="placeholder" placeholder="选填" />
+                <input value="{{height}}" name="height" placeholder-class="placeholder" placeholder="必填" />
             </view>
             <view class="section">
                 <view class="section__title">请输入体重</view>
@@ -134,7 +140,7 @@
                     <navigator url="/page/index/index">服务条款</navigator>
                 </view>
             </view> -->
-            <button class="regist-btn" form-type="submit" >下一步</button>
+            <button class="regist-btn" form-type="submit">下一步</button>
         </form>
     </view>
 </view>
