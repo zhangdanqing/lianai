@@ -47,9 +47,11 @@ App({
                 if (res.data && res.data.code === 0) {
                     if (res.data.data) {
                         wx.setStorageSync('gender',res.data.data.gender);
+                        wx.setStorageSync('name',res.data.data.name);
+                        this.globalData.userInfo = res.data.data;
                     }
                 } else if(res.data.code === -1){
-                    wx.setStorageSync('gender',"");
+                    wx.setStorageSync('gender',-1);
                 }
             },
             fail: () => {
@@ -60,5 +62,6 @@ App({
         hasLogin: false,
         domain: "https://www.lianaii.top/sofaindb/ailian",
         utilData: util,
+        userInfo:{}
     }
 })

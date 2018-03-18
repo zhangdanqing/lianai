@@ -6,7 +6,8 @@
 		"page/search/search",
 		"page/viewAll/viewAll",
 		"page/uploadPhotos/uploadPhotos",
-		"page/modify/modify"
+		"page/modify/modify",
+		"page/invitationCode/invitationCode"
 	],
 	"window": {
 		"navigationBarTextStyle": "black",

@@ -52,14 +52,14 @@ let pageObject = {
         let dataObj = {
             is_identity_card: this.data.idTempFilePaths[0],
             is_life_photo: this.data.checkboxTempFilePaths[0],
-            openId: wx.setStorageSync('openId')
+            open_id: wx.setStorageSync('openId')
         }
         if (!this.data.checkbox) {
             this.toast('请同意链爱服务条款');
             return;
         }
         wx.request({
-            url: domain + '/upload',
+            url: domain + '/up_pic',
             method: 'POST',
             data: {
                 "data": JSON.stringify(dataObj)
@@ -80,6 +80,8 @@ let pageObject = {
                             url: '../index/index'
                         })
                     }, 1000)
+                }else{
+                    this.toast(res.data.msg);
                 }
             },
             fail: () => {

@@ -6,12 +6,12 @@ let pageObject = {
         name: "",
         gender: "",
         genderArrary: [{
-                id: 0,
+                id: 1,
                 name: "男",
                 // checked: 'true'
             },
             {
-                id: 1,
+                id: 2,
                 name: "女"
             }
         ],

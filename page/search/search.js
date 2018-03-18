@@ -26,9 +26,11 @@ let pageObject = {
     },
     searchRequest:function(){
         wx.request({
-            url: domain+'/search',
+            url: domain+'/getinfo_by_name',
             method: 'POST',
-            data: dataObj,
+            data: {
+                name:wx.getStorageSync('name')
+            },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },

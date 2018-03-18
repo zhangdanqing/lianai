@@ -16,12 +16,4 @@
             <text class="year-old">46岁</text>
         </view>
     </view>
-    <view class="search-list-li clearfix" bindtap="viewAll">
-        <image class="head-portrait" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
-        <view class="information">
-            <text class="name">苗自强</text>
-            <text class="adress">住址就是多少机会的</text>
-            <text class="year-old">46岁</text>
-        </view>
-    </view>
 </view>
