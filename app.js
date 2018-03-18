@@ -3,7 +3,7 @@ App({
     onLaunch: function() {
         console.log('App Launch')
         wx.login({
-            success: function(res) {
+            success:(res)=>{
                 if (res.code) {
                     wx.request({
                         url: 'https://api.weixin.qq.com/sns/jscode2session',
@@ -15,9 +15,10 @@ App({
                         header: {
                             'content-type': 'application/x-www-form-urlencoded'
                         },
-                        success: function(res) {
-                            console.log(res.data)
+                        success: (res)=>{
+                            console.log(res.data.openid)
                             wx.setStorageSync('openId', res.data.openid);
+                            this.getUser(res.data.openid);
                         }
                     })
                 } else {
@@ -27,24 +28,33 @@ App({
         });
         wx.getUserInfo({
             success: function(res) {
-                // var userInfo = res.userInfo
-                // var nickName = userInfo.nickName
-                // var avatarUrl = userInfo.avatarUrl
-                // var gender = userInfo.gender //性别 0：未知、1：男、2：女
-                // var province = userInfo.province
-                // var city = userInfo.city
-                // var country = userInfo.country
-                //console.log(1111,res.userInfo);
                 wx.setStorageSync('userName',res.userInfo.nickName);
                 wx.setStorageSync('avatarUrl',res.userInfo.avatarUrl);
             }
         })
     },
-    onShow: function() {
-        console.log('App Show')
-    },
-    onHide: function() {
-        console.log('App Hide')
+    getUser:function(openId){
+        wx.request({
+            url: this.globalData.domain + '/getinfo_by_openid',
+            method: 'POST',
+            data: {
+                openId: openId
+            },
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: (res) => {
+                if (res.data && res.data.code === 0) {
+                    if (res.data.data) {
+                        wx.setStorageSync('gender',res.data.data.gender);
+                    }
+                } else {
+                    //this.toast(res.data.msg);
+                }
+            },
+            fail: () => {
+            }
+        })
     },
     globalData: {
         hasLogin: false,
