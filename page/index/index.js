@@ -46,23 +46,23 @@ let pageObject = {
     },
     isMemberRequest: function() {
         wx.request({
-            url: domain + '/isMember',
+            url: domain + '/is_member',
             method: 'POST',
             data: {
-                openId: wx.getStorageSync('openId')
+                open_id: wx.getStorageSync('openId')
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
             success: (res) => {
                 if (res.data && res.data.code === 0) {
-                    if (res.data.data) {
+                    if(res.data.data){
                         this.setData({
                             isMember: res.data.data.isMember
                         })
                         wx.setStorageSync('isMember', res.data.data.isMember);
                     }
-                } else {
+                } else{
                     this.toast(res.data.msg);
                 }
             },

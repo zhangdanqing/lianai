@@ -38,7 +38,7 @@ App({
             url: this.globalData.domain + '/getinfo_by_openid',
             method: 'POST',
             data: {
-                openId: openId
+                open_id: openId
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
@@ -48,8 +48,8 @@ App({
                     if (res.data.data) {
                         wx.setStorageSync('gender',res.data.data.gender);
                     }
-                } else {
-                    //this.toast(res.data.msg);
+                } else if(res.data.code === -1){
+                    wx.setStorageSync('gender',"");
                 }
             },
             fail: () => {
