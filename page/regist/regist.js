@@ -79,18 +79,30 @@ let pageObject = {
         })
     },
     formSubmit:function(e){
-        console.log(e.detail.value);
-        let dataObj=e.detail.value;
-        dataObj.openId=wx.setStorageSync('openId');
+        let dataObj=this.formatData(e.detail.value);
         wx.request({
             url: domain+'/register',
             method: 'POST',
-            data: dataObj,
+            data: {
+                "data":dataObj
+            },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
             success: function(res) {
-                console.log(res,'成功');
+                if(res.data && res.data.code===0){
+                    wx.showToast({
+                        title: '注册成功',
+                        icon: 'succes',
+                        duration: 1000,
+                        mask: true
+                    })
+                    setTimeout(()=>{
+                        wx.redirectTo({
+                            url: '../index/index'
+                        })
+                    },1000)
+                }
             },
             fail: function(err) {
                 this.toast('网络异常，请稍后再试');
@@ -99,6 +111,13 @@ let pageObject = {
     },
     toast: function(content) {
         utilData.toast(content, 'toastData.toastMsg', 'isToastShow', this);
+    },
+    formatData:function(option){
+        let obj=option;
+        obj.openId=wx.setStorageSync('openId');
+        obj.addressRegion=obj.addressRegion.join(' ');
+        obj.originRegion=obj.originRegion.join(' ');
+        return JSON.stringify(obj);
     }
     // prepay: function() {
     //     wx.request({

@@ -1,4 +1,8 @@
+<import src="../../template/courseList.wxml"/>
 <view class="index-box">
+    <view wx-if="{{isToastShow}}">
+        <template is="toast-box" data="{{...toastData}}"/>
+    </view>
     <view class="search-home-box">
         <view class="search-box">
             <icon type="search" size="12" />
@@ -34,4 +38,7 @@
             </view> -->
         </view>
     </view>
+</view>
+<view>
+	<modal title="提示" hidden="{{modalHidden}}" no-cancel="true" confirm-text="确定" bindconfirm="modalBindconfirm">你还不是链爱会员，请前往注册</modal>
 </view>

@@ -48,7 +48,7 @@ App({
     },
     globalData: {
         hasLogin: false,
-        domain: "https://www.lianaii.top:9147/sofaindb/ailian",
+        domain: "https://www.lianaii.top/sofaindb/ailian",
         utilData: util,
     }
 })
