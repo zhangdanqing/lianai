@@ -162,17 +162,15 @@ let pageObject = {
             },
             success: function(res) {
                 if (res.data && res.data.code === 0) {
-                    wx.showToast({
-                        title: '注册成功',
-                        icon: 'succes',
-                        duration: 1000,
-                        mask: true
+                    // wx.showToast({
+                    //     title: '注册成功',
+                    //     icon: 'succes',
+                    //     duration: 1000,
+                    //     mask: true
+                    // })
+                    wx.redirectTo({
+                        url: '../uploadPhotos/uploadPhotos'
                     })
-                    setTimeout(() => {
-                        wx.redirectTo({
-                            url: '../index/index'
-                        })
-                    }, 1000)
                 }
             },
             fail: function(err) {

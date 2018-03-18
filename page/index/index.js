@@ -1,5 +1,6 @@
 const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
+wx.setStorageSync('isMember',false);
 let pageObject = {
     data: {
         memberList: [],
@@ -16,6 +17,7 @@ let pageObject = {
             toastMsg: "",
         },
         isToastShow: false,
+        isMember:false
     },
     onShow: function() {
         // this.isMemberRequest();
@@ -47,13 +49,16 @@ let pageObject = {
             success: (res) => {
                 if (res.data && res.data.code === 0) {
                     if (res.data.data) {
-                        if (res.data.data.isMember) {
-                            
-                        }else{
-                            this.setData({
-                                modalHidden: false
-                            })
-                        }
+                        this.setData({
+                            isMember: res.data.data.isMember
+                        })
+                        wx.setStorageSync('isMember',res.data.data.isMember);
+                        // if (res.data.data.isMember) {
+                        // }else{
+                        //     this.setData({
+                        //         modalHidden: false
+                        //     })
+                        // }
                     }
                 } else {
                     this.toast(res.data.msg);
@@ -89,25 +94,40 @@ let pageObject = {
         })
     },
     searchJump: function() {
-        wx.navigateTo({
-            url: '../search/search'
-        })
+        let searchJump=function(){
+            wx.navigateTo({
+                url: '../search/search'
+            })
+        }
+        this.jumpToRegist(searchJump);
     },
     viewAll: function() {
-        wx.navigateTo({
-            url: '../viewAll/viewAll'
-        })
+        let viewAllJump=function(){
+            wx.navigateTo({
+                url: '../viewAll/viewAll'
+            })
+        }
+        this.jumpToRegist(viewAllJump);
     },
     toast: function(content) {
         utilData.toast(content, 'toastData.toastMsg', 'isToastShow', this);
     },
     modalBindconfirm: function() {
-        wx.redirectTo({
+        wx.navigateTo({
             url: '../regist/regist'
         })
         this.setData({
             modalHidden: true
         })
+    },
+    jumpToRegist:function(fn){
+        if( ! this.data.isMember){
+            this.setData({
+                modalHidden: false
+            })
+        }else{
+            fn();
+        }
     }
 }
 Page(pageObject)

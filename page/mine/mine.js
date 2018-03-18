@@ -2,9 +2,14 @@ let pageObject = {
     data: {
         headPortrait:wx.getStorageSync('avatarUrl'),
         userName:wx.getStorageSync('userName'),
+        modalHidden: true,
     },
     onShow: function() {
-
+        if(wx.getStorageSync('isMember')===false){
+            this.setData({
+                modalHidden: false
+            })
+        }
     },
     onReady: function() {
 
@@ -13,7 +18,15 @@ let pageObject = {
         wx.navigateTo({
             url:'../regist/regist'
         })
-    }
+    },
+    modalBindconfirm: function() {
+        wx.navigateTo({
+            url: '../regist/regist'
+        })
+        this.setData({
+            modalHidden: true
+        })
+    },
     // prepay: function() {
     //     wx.request({
     //         url: 'https://yourwebsit/service/getPay',

@@ -1,131 +1,39 @@
+<import src="../../template/courseList.wxml"/>
 <view class="regist">
+    <view wx-if="{{isToastShow}}">
+        <template is="toast-box" data="{{...toastData}}"/>
+    </view>
     <image class="banner" mode="aspectFill" src="../../img/banner1.png"></image>
-    <text class="title">填写信息 成为链爱会员</text>
+    <text class="title">上传信息 成为链爱会员</text>
     <view class="block"></view>
     <view class="content">
         <form bindsubmit="formSubmit">
             <view class="section">
-                <view class="section__title">请输入昵称</view>
-                <input value="{{name}}" name="name" placeholder-class="placeholder" placeholder="选填" />
-            </view>
-            <view class="section">
-                <view class="section__title">请选择出生日期</view>
-                <picker mode="date" value="{{date}}" name="date" data-key="date" bindchange="bindPickerChange" >
-                    <view class="picker">
-                        当前选择: {{date}}
-                    </view>
-                </picker>
-            </view>
-            <view class="section">
-                <view class="section__title">请选择地区</view>
-                <picker mode="region" data-key="addressRegion" bindchange="bindPickerChange" value="{{addressRegion}}" name="addressRegion" custom-item="{{customItem}}">
-                    <view class="picker">
-                        当前选择：{{addressRegion[0]}}，{{addressRegion[1]}}，{{addressRegion[2]}}
-                    </view>
-                </picker>
-            </view>
-            <view class="section">
-                <view class="section__title">请选择籍贯</view>
-                <picker mode="region" data-key="originRegion" bindchange="bindPickerChange" value="{{originRegion}}" name="originRegion" custom-item="{{customItem}}">
-                    <view class="picker">
-                        当前选择：{{originRegion[0]}}，{{originRegion[1]}}，{{originRegion[2]}}
-                    </view>
-                </picker>
-            </view>
-            <view class="section">
-                <view class="section__title">请输入您所在的行业</view>
-                <input value="{{industry}}" name="industry" placeholder-class="placeholder" placeholder="选填" />
-            </view>
-            <view class="section">
-                <view class="section__title">请输入您的职业</view>
-                <input value="{{occupation}}" name="occupation" placeholder-class="placeholder" placeholder="选填" />
-            </view>
-            <view class="section">
-                <view class="section__title">请选择年收入</view>
-                <picker mode="selector" data-key="income" bindchange="bindPickerChange" value="{{income}}" name="income" range="{{incomeArray}}" range-key="{{'name'}}">
-                    <view class="picker">
-                        当前选择：{{incomeArray[income].name}}
-                    </view>
-                </picker>
-            </view>
-            <view class="section">
-                <view class="section__title">身高</view>
-                <input value="{{height}}" name="height" placeholder-class="placeholder" placeholder="选填" />
-            </view>
-            <view class="section">
-                <view class="section__title">体重</view>
-                <input value="{{weight}}" name="weight" placeholder-class="placeholder" placeholder="选填" />
-            </view>
-            <view class="section">
-                <view class="section__title">民族</view>
-                <input value="{{nation}}" name="nation" placeholder-class="placeholder" placeholder="选填" />
-            </view>
-            <view class="section">
-                <view class="section__title">请选择学历</view>
-                <picker mode="selector" data-key="education" bindchange="bindPickerChange" value="{{education}}" name="education" range="{{educationArray}}" range-key="{{'name'}}">
-                    <view class="picker">
-                        当前选择：{{educationArray[education].name}}
-                    </view>
-                </picker>
-            </view>
-            <view class="section">
-                <view class="section__title">请输入您的毕业院校</view>
-                <input value="{{school}}" name="school" placeholder-class="placeholder" placeholder="选填" />
-            </view>
-            <view class="section">
-                <view class="section__title">当前婚姻状况</view>
-                <input value="{{maritalStatus}}" name="maritalStatus" placeholder-class="placeholder" placeholder="选填" />
-            </view>
-            <view class="section">
-                <view class="section__title">当地购房情况</view>
-                <picker mode="selector" data-key="purchase" bindchange="bindPickerChange" value="{{purchase}}" name="purchase" range="{{booleanArray}}" range-key="{{'name'}}">
-                    <view class="picker">
-                        当前选择：{{booleanArray[purchase].name}}
-                    </view>
-                </picker>
-            </view>
-            <view class="section">
-                <view class="section__title">购车情况</view>
-                <picker mode="selector" data-key="carBuying" bindchange="bindPickerChange" value="{{carBuying}}" name="carBuying" range="{{booleanArray}}" range-key="{{'name'}}">
-                    <view class="picker">
-                        当前选择：{{booleanArray[carBuying].name}}
-                    </view>
-                </picker>
-            </view>
-            <view class="section">
-                <view class="section__title">请填写您的择偶要求</view>
-                <textarea value="{{mateSelection}}" name="mateSelection" placeholder-class="placeholder" placeholder="选填" auto-height/>
-            </view>
-            <view class="section">
-                <view class="section__title">请填写您的兴趣爱好</view>
-                <textarea value="{{hobby}}" name="hobby" placeholder-class="placeholder" placeholder="选填" auto-height/>
-            </view>
-            <view class="section">
-                <view class="section__title">请填写您的恋爱宣言</view>
-                <textarea value="{{declaration}}" name="declaration" placeholder-class="placeholder" placeholder="选填" auto-height/>
-            </view>
-            <view class="section">
-                <view class="section__title">请上传身份证正面照片</view>
+                <view class="section__title">请上传一张身份证正面照片</view>
                 <image wx:for="{{idTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-                <view class="upload-image-box">
-                    <image src="../../img/add.png" class="upload-photos" data-arr="idTempFilePaths" bindtap="uploadPhoto"></image>
+                <view wx:if="{{isShowAddiD}}" class="upload-image-box">
+                    <image src="../../img/add.png" class="upload-photos" data-show="isShowAddiD" data-arr="idTempFilePaths" bindtap="uploadPhoto"></image>
                 </view>
             </view>
             <view class="section">
-                <view class="section__title">请上传头像</view>
+                <view class="section__title">请上传最精美生活照一张</view>
                 <image wx:for="{{checkboxTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-                <view class="upload-image-box">
-                    <image src="../../img/add.png" class="upload-photos" data-arr="checkboxTempFilePaths" bindtap="uploadPhoto"></image>
+                <view wx:if="{{isShowAddPhoto}}" class="upload-image-box">
+                    <image src="../../img/add.png" class="upload-photos" data-show="isShowAddPhoto" data-arr="checkboxTempFilePaths" bindtap="uploadPhoto"></image>
                 </view>
             </view>
             <view class="checkbox clearfix">
-                <checkbox color="#f95b5c" checked="true" value="{{checkbox}}" name="checkbox" />
-                <view class="agree">
-                    <text>我已阅读并且同意链爱的</text>
-                    <navigator url="/page/index/index">服务条款</navigator>
-                </view>
+                <checkbox-group bindchange="checkboxChange">
+                    <label class="checkbox" >
+                        <checkbox color="#f95b5c" checked="{{checkbox}}" value="{{checkbox}}" name="checkbox" />
+                        <view class="agree">
+                            <text>我已阅读并且同意链爱的</text>
+                            <navigator url="/page/index/index">服务条款</navigator>
+                        </view>
+                    </label>
+                </checkbox-group>
             </view>
-            <button class="regist-btn" form-type="submit" >下一步</button>
+            <button class="regist-btn" form-type="submit">注册</button>
         </form>
     </view>
 </view>
