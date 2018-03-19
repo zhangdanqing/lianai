@@ -1,35 +1,3 @@
-.view-all{
-    /* text-align: center; */
-}
-/* .head-detail{
-    width:100%;
-    height:105rpx;
-    background: #f95b5c;
-    padding-top:60rpx;
-    margin-bottom: 110rpx;
-}
-.head-photo{
-    width:180rpx;
-    height:180rpx;
-    border-radius: 50%;
-    margin:0 auto;
-    display: block;
-}
-.name{
-    font-size: 36rpx;
-    text-align: center;
-    color:#444;
-}
-.infor-content{
-    padding: 0 40rpx;
-    background: #f2f6f9;
-}
-.basic-infor{
-
-}
-.infor-title{
-
-} */
 .header{
     width:100%;
     background: #f95b5c;
@@ -93,5 +61,7 @@
     float: left;
     margin-right:30rpx;
     color:#525252;
-
+}
+.basic-tag{
+    margin-bottom: 30rpx;
 }

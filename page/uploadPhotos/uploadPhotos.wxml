@@ -36,4 +36,11 @@
             <button class="regist-btn" form-type="submit">注册</button>
         </form>
     </view>
+    <view class="success-opa">
+        <view class="success-content">
+            <text>恭喜您注册成功，请保存管理员微信，添加链爱微信社群</text>
+            <text class="account">173643643</text>
+            <button class="success-btn">确定</button>
+        </view>
+    </view>
 </view>
