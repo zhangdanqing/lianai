@@ -10,6 +10,7 @@ let pageObject = {
         toastData: {
             toastMsg: "",
         },
+        isToastShow: false,
     },
     onShow: function() {
 

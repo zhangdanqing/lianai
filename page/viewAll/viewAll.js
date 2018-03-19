@@ -35,12 +35,12 @@ let pageObject = {
             "purchase": 0,
             "carBuying": 1,
             "mateSelection": "lalala",
-            "hobby": "sudysudysd",
+            "hobby": "",
             "declaration": "谈一场不分手的恋爱，结一次永远不离的婚",
             "invite": "1111"
         }
     },
-    onLoad: function() {
+    onLoad: function(option) {
         this.setData({
             baseInfor: this.formatBaseData(this.data.data),
             lifePhoto: this.data.data.is_life_photo,
@@ -52,14 +52,16 @@ let pageObject = {
             mateSelection: this.data.data.mateSelection,
             hasInvite:this.data.data.invite?'是':'否'
         })
+        this.detailRequest(option.name);
     },
-    onShow: function() {
+    detailRequest: function(name) {
+        let dataObj={
+            name:name
+        }
         wx.request({
             url: domain + '/detail',
             method: 'POST',
-            data: {
-                name: wx.getStorageSync('name')
-            },
+            data: JSON.stringify(dataObj),
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },

@@ -1,19 +1,23 @@
+<import src="../../template/courseList.wxml"/>
 <view class="home-box home-box-new">
+    <view wx-if="{{isToastShow}}">
+        <template is="toast-box" data="{{...toastData}}"/>
+    </view>
     <view class="search-box search-box-new">
         <icon type="search" size="12" />
-        <input name="searchData" value="{{inputSearch}}" focus="{{focus}}" placeholder="请输入您要搜索的名字" placeholder-class="search-place" bindinput="onInp" bindfocus="focusInp" bindblur="blurInp" bindconfirm="confirmRequest" />
+        <input name="searchData" value="{{inputSearch}}"  placeholder="请输入您要搜索的名字" placeholder-class="search-place" bindinput="onInp" bindconfirm="confirmRequest" />
         <icon wx:if="{{clearIcon}}" class="clear-btn" type="clear" size="14" bindtap="clearContent" />
     </view>
-    <view class="search-btn">搜索</view>
+    <view class="search-btn" bindtap="searchRequest">搜索</view>
 </view>
-<text class="search-title">搜索列表</text>
+<text class="search-title">搜索信息</text>
 <view class="search-list">
-    <view class="search-list-li clearfix" bindtap="viewAll">
-        <image class="head-portrait" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
+    <view class="search-list-li clearfix" bindtap="viewAll" data-n="{{searchList.name}}">
+        <image class="head-portrait" mode="aspectFill" src="{{searchList.is_life_photo}}"/>
         <view class="information">
-            <text class="name">苗自强</text>
-            <text class="adress">住址就是多少机会的</text>
-            <text class="year-old">46岁</text>
+            <text class="name">{{searchList.name}}</text>
+            <text class="adress">{{searchList.addressRegion}}</text>
+            <text class="year-old">{{searchList.date}}</text>
         </view>
     </view>
 </view>

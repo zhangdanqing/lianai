@@ -29,7 +29,7 @@
             </view>
         </view>
     </view> -->
-    <view class="infor-content">
+    <view class="infor-content" wx:if="{{declaration}}">
         <view class="basic-infor">
             <view class="infor-title-box">
                 <text class="infor-title">恋爱宣言</text>
@@ -39,7 +39,7 @@
             </view>
         </view>
     </view>
-    <view class="infor-content">
+    <view class="infor-content" wx:if="{{hobby}}">
         <view class="basic-infor">
             <view class="infor-title-box">
                 <text class="infor-title">兴趣爱好</text>
@@ -49,7 +49,7 @@
             </view>
         </view>
     </view>
-    <view class="infor-content">
+    <view class="infor-content" wx:if="{{mateSelection}}">
         <view class="basic-infor">
             <view class="infor-title-box">
                 <text class="infor-title">择偶条件</text>
