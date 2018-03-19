@@ -1,6 +1,13 @@
+<import src="../../template/courseList.wxml" />
 <view class="invitation">
+    <view wx-if="{{isToastShow}}">
+        <template is="toast-box" data="{{...toastData}}" />
+    </view>
     <view>
-        <view class="invitation-code">73647364</view>
-        <view>点击刷新</view>
+        <view class="invitation-code">{{invite}}</view>
+        <view class="clearfix refresh-box" bindtap="refresh">
+            <image class="refresh" src="../../img/refresh.png"></image>
+            <text class="refresh-text">点击刷新</text>
+        </view>
     </view>
 </view>

@@ -185,7 +185,7 @@ let pageObject = {
     },
     formatData: function(option) {
         let obj = option;
-        obj.openId = wx.setStorageSync('openId');
+        obj.open_id = wx.getStorageSync('openId');
         obj.gender = this.data.gender;
         obj.addressRegion = obj.addressRegion.join(' ');
         obj.originRegion = obj.originRegion.join(' ');

@@ -6,7 +6,30 @@
     justify-content: center;
     align-items: center;
     color:#fff;
+    text-align: center;
 }
 .invitation-code{
-    width:80%;
+    background: rgba(255,255,255,0.2);
+    border:1px solid #fff;
+    padding: 20rpx 80rpx;
+    font-size: 50rpx;
+    margin-bottom: 40rpx;
+    display: block;
+}
+.refresh-box{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.refresh{
+    width:60rpx;
+    height:60rpx;
+    float: left;
+    margin-right:20rpx;
+}
+.refresh-text{
+    font-size: 38rpx;
+    line-height: 60rpx;
+    float: left;
 }
