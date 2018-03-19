@@ -11,6 +11,8 @@ let pageObject = {
             toastMsg: "",
         },
         isToastShow: false,
+        xcxName:"",
+        successShow:false
     },
     onShow: function() {
 
@@ -70,19 +72,11 @@ let pageObject = {
             },
             success: (res) => {
                 if (res.data && res.data.code === 0) {
-                    // wx.showToast({
-                    //     title: '注册成功',
-                    //     icon: 'succes',
-                    //     duration: 1000,
-                    //     mask: true
-                    // })
-                    // setTimeout(() => {
-                    //     wx.redirectTo({
-                    //         url: '../index/index'
-                    //     })
-                    // }, 1000)
-
-                }else{
+                    this.setData({
+                        xcxName:wx.getStorageSync('xcxName'),
+                        successShow:true
+                    })
+                } else {
                     this.toast(res.data.msg);
                 }
             },
@@ -94,5 +88,15 @@ let pageObject = {
     toast: function(content) {
         utilData.toast(content, 'toastData.toastMsg', 'isToastShow', this);
     },
+    confirm: function() {
+        this.setData({
+            successShow:false
+        })
+        setTimeout(() => {
+            wx.redirectTo({
+                url: '../index/index'
+            })
+        }, 1000)
+    }
 }
 Page(pageObject);

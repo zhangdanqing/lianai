@@ -137,14 +137,15 @@ let pageObject = {
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
-            success: function(res) {
+            success:(res)=>{
                 if (res.data && res.data.code === 0) {
                     wx.redirectTo({
                         url: '../uploadPhotos/uploadPhotos'
                     })
+                    wx.setStorageSync('xcxName',name );
                 }
             },
-            fail: function(err) {
+            fail:(err)=>{
                 this.toast('网络异常，请稍后再试');
             }
         })

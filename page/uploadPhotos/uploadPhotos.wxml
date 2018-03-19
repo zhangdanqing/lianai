@@ -36,11 +36,12 @@
             <button class="regist-btn" form-type="submit">注册</button>
         </form>
     </view>
-    <view class="success-opa">
+    <view class="success-opa" wx:if="{{successShow}}">
         <view class="success-content">
-            <text>恭喜您注册成功，请保存管理员微信，添加链爱微信社群</text>
-            <text class="account">173643643</text>
-            <button class="success-btn">确定</button>
+            <text>恭喜{{xcxName}}注册成功</text>
+            <text>请添加管理员微信，发送此页截图给管理员，加入链爱微信社群</text>
+            <image class="code-image" src="../../img/code.jpg"></image>
+            <button class="success-btn" bindtap="confirm">确定</button>
         </view>
     </view>
 </view>

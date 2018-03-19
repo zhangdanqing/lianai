@@ -119,12 +119,13 @@ checkbox, .agree {
 
 }
 
-.account{
-    font-size: 70rpx;
-    color:#f95b5c;
+.success-content text{
     display: block;
-    padding-top: 20rpx;
-    margin-bottom: 30rpx;
+    margin-bottom: 10rpx;
+}
+
+.code-image{
+    width:100%;
 }
 
 .success-btn{
