@@ -21,23 +21,18 @@
     <view class="recommend-box">
         <text class="recommend-title">今日推荐</text>
         <view class="recommend-list clearfix">
-            <view class="recommend-list-item" bindtap="viewAll" data-n="">
-                <image mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="slide-image"/>
-                <text class="title">金可言</text>
-                <text class="describ">29岁 自由职业</text>
+            <view wx:for="{{memberList}}" wx:key="name" class="recommend-list-item" bindtap="viewAll" data-n="">
+                <image mode="aspectFill" src="{{item.is_life_photo}}" class="slide-image"/>
+                <text class="title">{{item.name}}</text>
+                <text class="describ">{{item.addressRegion}}</text>
             </view>
-            <!-- <view class="recommend-list-item">
-                <image mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="slide-image"/>
-                <text class="title">金可言</text>
-                <text class="describ">29岁 自由职业</text>
-            </view>
-            <view class="recommend-list-item">
-                <image mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="slide-image"/>
-                <text class="title">金可言</text>
-                <text class="describ">29岁 自由职业</text>
-            </view> -->
         </view>
     </view>
+</view>
+<view class="body-view">
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
 </view>
 <view>
 	<modal title="提示" hidden="{{modalHidden}}" no-cancel="true" confirm-text="确定" bindconfirm="modalBindconfirm">你还不是链爱会员，请前往注册</modal>

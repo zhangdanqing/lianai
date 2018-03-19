@@ -21,6 +21,7 @@ let pageObject = {
         isToastShow: false,
         gender: "",
         unLock: true,
+        hidden: true,
     },
     onShow: function() {
         this.setData({
@@ -38,6 +39,9 @@ let pageObject = {
         }
         if (bFlag) {
             bFlag = false;
+            this.setData({
+                hidden: false
+            });
             wx.request({
                 url: domain + '/recommendation',
                 method: 'POST',
@@ -67,6 +71,9 @@ let pageObject = {
                 },
                 complete: () => {
                     bFlag = true;
+                    this.setData({
+                        hidden: true
+                    });
                     wx.stopPullDownRefresh();
                 }
             })
