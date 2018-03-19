@@ -4,7 +4,7 @@ App({
         console.log('App Launch')
         wx.setStorageSync('isMember', false);
         wx.login({
-            success:(res)=>{
+            success: (res) => {
                 if (res.code) {
                     wx.request({
                         url: 'https://api.weixin.qq.com/sns/jscode2session',
@@ -16,7 +16,7 @@ App({
                         header: {
                             'content-type': 'application/x-www-form-urlencoded'
                         },
-                        success: (res)=>{
+                        success: (res) => {
                             wx.setStorageSync('openId', res.data.openid);
                             this.isMemberRequest(res.data.openid);
                         }
@@ -28,62 +28,62 @@ App({
         });
         wx.getUserInfo({
             success: function(res) {
-                wx.setStorageSync('userName',res.userInfo.nickName);
-                wx.setStorageSync('avatarUrl',res.userInfo.avatarUrl);
+                wx.setStorageSync('userName', res.userInfo.nickName);
+                wx.setStorageSync('avatarUrl', res.userInfo.avatarUrl);
             }
         })
     },
     isMemberRequest: function(openId) {
+        let dataObj = {
+            open_id: openId
+        }
         wx.request({
             url: this.globalData.domain + '/is_member',
             method: 'POST',
-            data: {
-                open_id: openId
-            },
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: (res) => {
-                if (res.data && res.data.code === 0) {
-                    if(res.data.data){
-                        wx.setStorageSync('isMember', res.data.data.isMember);
-                        this.getUser(openId);
-                    }
-                }
-            },
-            fail: () => {
-            }
-        })
-    },
-    getUser:function(openId){
-        wx.request({
-            url: this.globalData.domain + '/getinfo_by_openid',
-            method: 'POST',
-            data: {
-                open_id: openId
-            },
+            data: JSON.stringify(dataObj),
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
             success: (res) => {
                 if (res.data && res.data.code === 0) {
                     if (res.data.data) {
-                        wx.setStorageSync('gender',res.data.data.gender);
-                        wx.setStorageSync('name',res.data.data.name);
-                        this.globalData.userInfo = res.data.data;
+                        wx.setStorageSync('isMember', res.data.data.isMember);
+                        this.getUser(openId);
                     }
-                } else if(res.data.code === -1){
-                    wx.setStorageSync('gender',-1);
                 }
             },
-            fail: () => {
-            }
+            fail: () => {}
+        })
+    },
+    getUser: function(openId) {
+        let dataObj = {
+            open_id: openId
+        }
+        wx.request({
+            url: this.globalData.domain + '/getinfo_by_openid',
+            method: 'POST',
+            data: JSON.stringify(dataObj),
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: (res) => {
+                if (res.data && res.data.code === 0) {
+                    if (res.data.data) {
+                        wx.setStorageSync('gender', res.data.data.gender);
+                        wx.setStorageSync('name', res.data.data.name);
+                        this.globalData.userInfo = res.data.data;
+                    }
+                } else if (res.data.code === -1) {
+                    wx.setStorageSync('gender', -1);
+                }
+            },
+            fail: () => {}
         })
     },
     globalData: {
         hasLogin: false,
         domain: "https://www.lianaii.top/sofaindb/ailian",
         utilData: util,
-        userInfo:{}
+        userInfo: {}
     }
 })

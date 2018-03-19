@@ -39,7 +39,7 @@ let pageObject = {
     },
     viewAll: function(e) {
         wx.navigateTo({
-            url: '../viewAll/viewAll?name='+e.currentTarget.dataset.n
+            url: '../viewAll/viewAll?name=' + e.currentTarget.dataset.n
         })
     },
     confirmRequest: function() {
@@ -51,12 +51,13 @@ let pageObject = {
         });
     },
     searchRequest: function() {
+        let dataObj = {
+            name: this.data.inputSearch
+        }
         wx.request({
             url: domain + '/detail',
             method: 'POST',
-            data: {
-                name: this.data.inputSearch
-            },
+            data: JSON.stringify(dataObj),
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
