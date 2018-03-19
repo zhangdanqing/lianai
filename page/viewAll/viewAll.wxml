@@ -1,18 +1,4 @@
 <view class="view-all">
-    <!-- <view class="head-detail">
-        <image class="head-photo" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
-    </view>
-    <text class="name">苗子请</text>
-    <view class="infor-content">
-        <view class="basic-infor">
-            <text class="infor-title">基本资料</text>
-            <view>
-                <text></text>
-            </view>
-        </view>
-    </view> -->
-
-
     <view class="header clearfix">
         <image class="head-photo" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
         <view class="header-infor">
@@ -35,16 +21,16 @@
             </view>
         </view>
     </view>
-    <view class="infor-content">
+    <!-- <view class="infor-content">
         <view class="basic-infor">
             <view class="infor-title-box">
                 <text class="infor-title">相册</text>
             </view>
             <view class="infor-body">
-                
+
             </view>
         </view>
-    </view>
+    </view> -->
     <view class="infor-content">
         <view class="basic-infor">
             <view class="infor-title-box">
@@ -72,6 +58,16 @@
             </view>
             <view class="infor-body">
                 <text>谈一场不分手的恋爱，结一次永远不离的婚</text>
+            </view>
+        </view>
+    </view>
+    <view class="infor-content">
+        <view class="basic-infor">
+            <view class="infor-title-box">
+                <text class="infor-title">是否有保荐人</text>
+            </view>
+            <view class="infor-body">
+                <text>是</text>
             </view>
         </view>
     </view>

@@ -13,6 +13,9 @@
     padding-top: 20rpx;
     padding-bottom: 20rpx;
 }
+swiper{
+    height:360rpx;
+}
 .recommend-box{
     padding: 40rpx;
 }

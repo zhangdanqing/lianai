@@ -12,12 +12,10 @@ let pageObject = {
         industry: userInfo.industry,
         occupation: userInfo.occupation,
         income: userInfo.income,
-        incomeArray: ['15万以下', '15-30万', '30万以上'],
         height: userInfo.height,
         weight: userInfo.weight,
         nation: userInfo.nation,
         education: userInfo.education,
-        educationArray: ['专科及以下', '本科', '硕士', '博士', '其他'],
         school: userInfo.school,
         maritalStatus: userInfo.maritalStatus,
         purchase: userInfo.purchase,
@@ -28,6 +26,9 @@ let pageObject = {
         checkbox: "",
         idTempFilePaths: [],
         checkboxTempFilePaths: [],
+        incomeArray: ['15万以下', '15-30万', '30万以上'],
+        educationArray: ['专科及以下', '本科', '硕士', '博士'],
+        maritalArray: ['单身','已婚','离异','丧偶'],
         genderArrary: [{
                 id: 0,
                 name: "男",
@@ -36,23 +37,6 @@ let pageObject = {
             {
                 id: 1,
                 name: "女"
-            }
-        ],
-        maritalArray: [{
-                id: 0,
-                name: '单身'
-            },
-            {
-                id: 1,
-                name: '已婚'
-            },
-            {
-                id: 2,
-                name: '离异'
-            },
-            {
-                id: 3,
-                name: '丧偶'
             }
         ],
         booleanArray: [{

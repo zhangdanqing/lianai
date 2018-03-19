@@ -82,11 +82,10 @@
                 <input value="{{school}}" name="school" placeholder-class="placeholder" placeholder="选填" />
             </view>
             <view class="section">
-                <view class="section__title">婚姻状况</view>
-                <!-- <input value="{{maritalStatus}}" name="maritalStatus" placeholder-class="placeholder" placeholder="选填" /> -->
-                <picker mode="selector" data-key="maritalStatus" bindchange="bindPickerChange" value="{{maritalStatus}}" name="maritalStatus" range="{{maritalArray}}" range-key="{{'name'}}">
+                <view class="section__title">当前婚姻状况</view>
+                <picker mode="selector" data-key="maritalStatus" bindchange="bindPickerChange" value="{{maritalStatus}}" name="maritalStatus" range="{{maritalArray}}">
                     <view class="picker">
-                        当前选择：{{maritalArray[maritalStatus].name}}
+                        当前选择：{{maritalArray[maritalStatus]}}
                     </view>
                 </picker>
             </view>

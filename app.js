@@ -2,6 +2,7 @@ const util = require('./util/util.js');
 App({
     onLaunch: function() {
         console.log('App Launch')
+        wx.setStorageSync('isMember', false);
         wx.login({
             success:(res)=>{
                 if (res.code) {
@@ -16,9 +17,8 @@ App({
                             'content-type': 'application/x-www-form-urlencoded'
                         },
                         success: (res)=>{
-                            console.log(res.data.openid)
                             wx.setStorageSync('openId', res.data.openid);
-                            this.getUser(res.data.openid);
+                            this.isMemberRequest(res.data.openid);
                         }
                     })
                 } else {
@@ -30,6 +30,28 @@ App({
             success: function(res) {
                 wx.setStorageSync('userName',res.userInfo.nickName);
                 wx.setStorageSync('avatarUrl',res.userInfo.avatarUrl);
+            }
+        })
+    },
+    isMemberRequest: function(openId) {
+        wx.request({
+            url: this.globalData.domain + '/is_member',
+            method: 'POST',
+            data: {
+                open_id: openId
+            },
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: (res) => {
+                if (res.data && res.data.code === 0) {
+                    if(res.data.data){
+                        wx.setStorageSync('isMember', res.data.data.isMember);
+                        this.getUser(openId);
+                    }
+                }
+            },
+            fail: () => {
             }
         })
     },

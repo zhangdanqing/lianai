@@ -5,6 +5,21 @@ let pageObject = {
     data: {
         name: "",
         gender: "",
+        date: "",
+        addressRegion: [],
+        originRegion: [],
+        industry: "",
+        occupation: "",
+        income: null,
+        height: "",
+        weight: "",
+        nation: "",
+        education: null,
+        school: "",
+        maritalStatus: null,
+        incomeArray: ['15万以下', '15-30万', '30万以上'],
+        educationArray: ['专科及以下', '本科', '硕士', '博士'],
+        maritalArray: ['单身','已婚','离异','丧偶'],
         genderArrary: [{
                 id: 1,
                 name: "男",
@@ -13,37 +28,6 @@ let pageObject = {
             {
                 id: 2,
                 name: "女"
-            }
-        ],
-        date: "",
-        addressRegion: [],
-        originRegion: [],
-        industry: "",
-        occupation: "",
-        income: null,
-        incomeArray: ['15万以下', '15-30万', '30万以上'],
-        height: "",
-        weight: "",
-        nation: "",
-        education: null,
-        educationArray: ['专科及以下', '本科', '硕士', '博士', '其他'],
-        school: "",
-        maritalStatus: null,
-        maritalArray: [{
-                id: 0,
-                name: '单身'
-            },
-            {
-                id: 1,
-                name: '已婚'
-            },
-            {
-                id: 2,
-                name: '离异'
-            },
-            {
-                id: 3,
-                name: '丧偶'
             }
         ],
         booleanArray: [{
@@ -57,6 +41,7 @@ let pageObject = {
         ],
         purchase: null,
         carBuying: null,
+        invite:"",
         mateSelection: "",
         hobby: "",
         declaration: "",
