@@ -80,3 +80,10 @@ checkbox,.agree{
     position: relative;
     box-sizing: border-box;
 }
+.change-image{
+    display: block;
+    padding-top: 20rpx;
+    font-size: 34rpx;
+    color:#111d78;
+    text-decoration: underline;
+}

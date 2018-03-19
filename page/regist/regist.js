@@ -128,31 +128,17 @@ let pageObject = {
             this.toast('请填写您当前婚姻状况');
             return;
         }
-        if( ! dataObj.purchase){
-            this.toast('请填写您当地购房状况');
-            return;
-        }
-        if( ! dataObj.carBuying){
-            this.toast('请填写您当地购车状况');
-            return;
-        }
         wx.request({
             url: domain + '/register',
             method: 'POST',
             data: {
-                "data": dataObj
+                "data": JSON.stringify(dataObj)
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
             success: function(res) {
                 if (res.data && res.data.code === 0) {
-                    // wx.showToast({
-                    //     title: '注册成功',
-                    //     icon: 'succes',
-                    //     duration: 1000,
-                    //     mask: true
-                    // })
                     wx.redirectTo({
                         url: '../uploadPhotos/uploadPhotos'
                     })
@@ -172,41 +158,7 @@ let pageObject = {
         obj.gender = this.data.gender;
         obj.addressRegion = obj.addressRegion.join(' ');
         obj.originRegion = obj.originRegion.join(' ');
-        return JSON.stringify(obj);
+        return obj;
     }
-    // prepay: function() {
-    //     wx.request({
-    //         url: 'https://yourwebsit/service/getPay',
-    //         method: 'POST',
-    //         data: {
-    //             bookingNo: bookingNo,
-    //             /*订单号*/
-    //             total_fee: total_fee,
-    //             /*订单金额*/
-    //             openid: openid
-    //         },
-    //         header: {
-    //             'content-type': 'application/json'
-    //         },
-    //         success: function(res) {
-    //             wx.requestPayment({
-    //                 'timeStamp': timeStamp,
-    //                 'nonceStr': nonceStr,
-    //                 'package': 'prepay_id=' + res.data.prepay_id,
-    //                 'signType': 'MD5',
-    //                 'paySign': res.data._paySignjs,
-    //                 'success': function(res) {
-    //                     console.log(res);
-    //                 },
-    //                 'fail': function(res) {
-    //                     console.log('fail:' + JSON.stringify(res));
-    //                 }
-    //             })
-    //         },
-    //         fail: function(err) {
-    //             console.log(err)
-    //         }
-    //     })
-    // }
 }
 Page(pageObject);

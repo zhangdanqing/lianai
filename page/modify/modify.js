@@ -1,42 +1,70 @@
 const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
-const userInfo = getApp().globalData.userInfo;
+//const userInfo = getApp().globalData.userInfo;
+let userInfo={
+        "is_life_photo":"http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg",
+        "identi_url":"http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg",
+		"name":"金可言",
+		"date":"1991-2-3",
+		"gender":2,
+		"addressRegion":"北京 顺义",
+		"originRegion":"河北 张家口 涿鹿",
+		"industry":"互联网",
+		"occupation":"开发",
+		"income":"15-30万",
+		"height":"187",
+		"weight":"100",
+		"nation":"汉",
+		"education":"本科",
+		"school":"北大",
+		"maritalStatus":"已婚",
+		"purchase":0,
+		"carBuying":1,
+		"mateSelection":"lalala",
+		"hobby":"121212",
+		"declaration":"edee",
+		"invite":"32232"
+}
 let regName = /^[a-zA-Z0-9_\u4e00-\u9fa5]{1,12}$/;
+let incomeArray= ['15万以下', '15-30万', '30万以上'];
+let educationArray= ['专科及以下', '本科', '硕士', '博士'];
+let maritalArray= ['单身','已婚','离异','丧偶'];
 let pageObject = {
     data: {
         name: userInfo.name,
         gender: userInfo.gender,
         date: userInfo.date,
-        //addressRegion: userInfo.addressRegion.split(' '),
-        //originRegion: userInfo.originRegion.split(' '),
+        addressRegion: userInfo.addressRegion.split(' '),
+        originRegion: userInfo.originRegion.split(' '),
         industry: userInfo.industry,
         occupation: userInfo.occupation,
-        income: userInfo.income,
+        income: incomeArray.indexOf(userInfo.income),
         height: userInfo.height,
         weight: userInfo.weight,
         nation: userInfo.nation,
-        education: userInfo.education,
+        education: educationArray.indexOf(userInfo.education),
         school: userInfo.school,
-        maritalStatus: userInfo.maritalStatus,
+        maritalStatus: maritalArray.indexOf(userInfo.maritalStatus),
         purchase: userInfo.purchase,
         carBuying: userInfo.carBuying,
         mateSelection: userInfo.mateSelection,
         hobby: userInfo.hobby,
         declaration: userInfo.declaration,
-        checkbox: "",
-        idTempFilePaths: [],
-        checkboxTempFilePaths: [],
+        checkbox: true,
+        idTempFilePaths: [userInfo.identi_url],
+        checkboxTempFilePaths:[userInfo.is_life_photo],
         incomeArray: ['15万以下', '15-30万', '30万以上'],
         educationArray: ['专科及以下', '本科', '硕士', '博士'],
         maritalArray: ['单身','已婚','离异','丧偶'],
         genderArrary: [{
-                id: 0,
+                id: 1,
                 name: "男",
-                // checked: 'true'
+                checked: userInfo.gender===1?true:false
             },
             {
-                id: 1,
-                name: "女"
+                id: 2,
+                name: "女",
+                checked: userInfo.gender===2?true:false
             }
         ],
         booleanArray: [{
@@ -80,8 +108,20 @@ let pageObject = {
             }
         })
     },
+    checkboxChange: function(e) {
+        let bChecked = null;
+        if (e.detail.value.length === 0) {
+            bChecked = false
+        } else if (e.detail.value.length === 1) {
+            bChecked = true
+        }
+        this.setData({
+            checkbox: bChecked
+        })
+    },
     formSubmit: function(e) {
         let dataObj = this.formatData(e.detail.value);
+        console.log(dataObj);
         let name = e.detail.value.name;
         if (name && name.toString().match(regName)) {} else {
             this.toast('请填写1-12位汉字或者数字或者字母的昵称');
@@ -127,19 +167,15 @@ let pageObject = {
             this.toast('请填写您当前婚姻状况');
             return;
         }
-        if (!dataObj.purchase) {
-            this.toast('请填写您当地购房状况');
-            return;
-        }
-        if (!dataObj.carBuying) {
-            this.toast('请填写您当地购车状况');
+        if (!this.data.checkbox) {
+            this.toast('请同意链爱服务条款');
             return;
         }
         wx.request({
             url: domain + '/change_detail',
             method: 'POST',
             data: {
-                "data": dataObj
+                "data": JSON.stringify(dataObj)
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
@@ -173,7 +209,9 @@ let pageObject = {
         obj.gender = this.data.gender;
         obj.addressRegion = obj.addressRegion.join(' ');
         obj.originRegion = obj.originRegion.join(' ');
-        return JSON.stringify(obj);
+        obj.is_life_photo = this.data.idTempFilePaths.join('');
+        obj.identi_url = this.data.checkboxTempFilePaths.join('');
+        return obj;
     }
 }
 Page(pageObject)
