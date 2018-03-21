@@ -16,7 +16,7 @@ let pageObject = {
     },
     modifyTap:function(){
         wx.navigateTo({
-            url:'../regist/regist'
+            url:'../modify/modify'
         })
     },
     inviteTap:function(){

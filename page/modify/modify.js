@@ -1,71 +1,37 @@
 const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
-//const userInfo = getApp().globalData.userInfo;
-let userInfo={
-        "is_life_photo":"http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg",
-        "identi_url":"http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg",
-		"name":"金可言",
-		"date":"1991-2-3",
-		"gender":2,
-		"addressRegion":"北京 顺义",
-		"originRegion":"河北 张家口 涿鹿",
-		"industry":"互联网",
-		"occupation":"开发",
-		"income":"15-30万",
-		"height":"187",
-		"weight":"100",
-		"nation":"汉",
-		"education":"本科",
-		"school":"北大",
-		"maritalStatus":"已婚",
-		"purchase":0,
-		"carBuying":1,
-		"mateSelection":"lalala",
-		"hobby":"121212",
-		"declaration":"edee",
-		"invite":"32232"
-}
 let regName = /^[a-zA-Z0-9_\u4e00-\u9fa5]{1,12}$/;
 let incomeArray= ['15万以下', '15-30万', '30万以上'];
 let educationArray= ['专科及以下', '本科', '硕士', '博士'];
 let maritalArray= ['单身','已婚','离异','丧偶'];
 let pageObject = {
     data: {
-        name: userInfo.name,
-        gender: userInfo.gender,
-        date: userInfo.date,
-        addressRegion: userInfo.addressRegion.split(' '),
-        originRegion: userInfo.originRegion.split(' '),
-        industry: userInfo.industry,
-        occupation: userInfo.occupation,
-        income: incomeArray.indexOf(userInfo.income),
-        height: userInfo.height,
-        weight: userInfo.weight,
-        nation: userInfo.nation,
-        education: educationArray.indexOf(userInfo.education),
-        school: userInfo.school,
-        maritalStatus: maritalArray.indexOf(userInfo.maritalStatus),
-        purchase: userInfo.purchase,
-        carBuying: userInfo.carBuying,
-        mateSelection: userInfo.mateSelection,
-        hobby: userInfo.hobby,
-        declaration: userInfo.declaration,
+        name: "",
+        gender: "",
+        date: "",
+        addressRegion: "",
+        originRegion: "",
+        industry: "",
+        occupation: "",
+        income: "",
+        height: "",
+        weight: "",
+        nation: "",
+        education: "",
+        school: "",
+        maritalStatus: "",
+        purchase: "",
+        carBuying: "",
+        mateSelection: "",
+        hobby: "",
+        declaration: "",
         checkbox: true,
-        idTempFilePaths: [userInfo.identi_url],
-        checkboxTempFilePaths:[userInfo.is_life_photo],
+        idTempFilePaths: [],
+        checkboxTempFilePaths:[],
         incomeArray: ['15万以下', '15-30万', '30万以上'],
         educationArray: ['专科及以下', '本科', '硕士', '博士'],
         maritalArray: ['单身','已婚','离异','丧偶'],
-        genderArrary: [{
-                id: 1,
-                name: "男",
-                checked: userInfo.gender===1?true:false
-            },
-            {
-                id: 2,
-                name: "女",
-                checked: userInfo.gender===2?true:false
-            }
+        genderArrary: [
         ],
         booleanArray: [{
                 id: 0,
@@ -82,10 +48,44 @@ let pageObject = {
         isToastShow: false,
     },
     onShow: function() {
-
-    },
-    onReady: function() {
-
+        let userInfo = getApp().globalData.userInfo;
+        this.setData({
+            name: userInfo.name,
+            gender: userInfo.gender,
+            date: userInfo.date,
+            addressRegion: userInfo.addressRegion.split(' '),
+            originRegion: userInfo.originRegion.split(' '),
+            industry: userInfo.industry,
+            occupation: userInfo.occupation,
+            income: incomeArray.indexOf(userInfo.income),
+            height: userInfo.height,
+            weight: userInfo.weight,
+            nation: userInfo.nation,
+            education: educationArray.indexOf(userInfo.education),
+            school: userInfo.school,
+            maritalStatus: maritalArray.indexOf(userInfo.maritalStatus),
+            purchase: userInfo.purchase,
+            carBuying: userInfo.carBuying,
+            mateSelection: userInfo.mateSelection,
+            hobby: userInfo.hobby,
+            declaration: userInfo.declaration,
+            idTempFilePaths: [userInfo.identi_url],
+            checkboxTempFilePaths:[userInfo.is_life_photo],
+            incomeArray: ['15万以下', '15-30万', '30万以上'],
+            educationArray: ['专科及以下', '本科', '硕士', '博士'],
+            maritalArray: ['单身','已婚','离异','丧偶'],
+            genderArrary: [{
+                    id: 1,
+                    name: "男",
+                    checked: userInfo.gender===1?true:false
+                },
+                {
+                    id: 2,
+                    name: "女",
+                    checked: userInfo.gender===2?true:false
+                }
+            ],
+        })
     },
     radioChange: function(e) {
         this.setData({

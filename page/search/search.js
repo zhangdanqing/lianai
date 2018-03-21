@@ -10,32 +10,6 @@ let pageObject = {
         isToastShow: false,
     },
     onShow: function() {
-        var data = {
-            "is_life_photo": "http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg",
-            "name": "金可言",
-            "date": "1991-2-3",
-            "gender": 0,
-            "addressRegion": "北京 顺义",
-            "originRegion": "河北 张家口 涿鹿",
-            "industry": "互联网",
-            "occupation": "开发",
-            "income": "13万",
-            "height": "187",
-            "weight": "100",
-            "nation": "汉",
-            "education": "本科",
-            "school": "北大",
-            "maritalStatus": "已婚",
-            "purchase": 0,
-            "carBuying": 1,
-            "mateSelection": "lalala",
-            "hobby": "",
-            "declaration": "",
-            "invite": "32232"
-        }
-        this.setData({
-            searchList: data
-        });
     },
     viewAll: function(e) {
         wx.navigateTo({

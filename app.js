@@ -26,6 +26,7 @@ App({
                 }
             }
         });
+        //this.isMemberRequest();
         wx.getUserInfo({
             success: function(res) {
                 wx.setStorageSync('userName', res.userInfo.nickName);
@@ -82,7 +83,8 @@ App({
     },
     globalData: {
         hasLogin: false,
-        domain: "https://www.lianaii.top/sofaindb/ailian",
+        domain: "https://lianai.situdata.com/sofaindb/ailian",
+        domain2: "https://www.lianaii.top/sofaindb/ailian",
         utilData: util,
         userInfo: {}
     }
