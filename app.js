@@ -3,30 +3,30 @@ App({
     onLaunch: function() {
         console.log('App Launch')
         wx.setStorageSync('isMember', false);
-        wx.login({
-            success: (res) => {
-                if (res.code) {
-                    wx.request({
-                        url: 'https://api.weixin.qq.com/sns/jscode2session',
-                        data: {
-                            appid: 'wx5a2a47bdd9497335',
-                            secret: 'c5d1fbf42338492343f5e8c8a3e2cacf',
-                            js_code: res.code
-                        },
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: (res) => {
-                            wx.setStorageSync('openId', res.data.openid);
-                            this.isMemberRequest(res.data.openid);
-                        }
-                    })
-                } else {
-                    console.log('获取用户登录态失败！' + res.errMsg)
-                }
-            }
-        });
-        //this.isMemberRequest();
+        // wx.login({
+        //     success: (res) => {
+        //         if (res.code) {
+        //             wx.request({
+        //                 url: 'https://api.weixin.qq.com/sns/jscode2session',
+        //                 data: {
+        //                     appid: 'wx5a2a47bdd9497335',
+        //                     secret: 'c5d1fbf42338492343f5e8c8a3e2cacf',
+        //                     js_code: res.code
+        //                 },
+        //                 header: {
+        //                     'content-type': 'application/x-www-form-urlencoded'
+        //                 },
+        //                 success: (res) => {
+        //                     wx.setStorageSync('openId', res.data.openid);
+        //                     this.isMemberRequest(res.data.openid);
+        //                 }
+        //             })
+        //         } else {
+        //             console.log('获取用户登录态失败！' + res.errMsg)
+        //         }
+        //     }
+        // });
+        this.isMemberRequest();
         wx.getUserInfo({
             success: function(res) {
                 wx.setStorageSync('userName', res.userInfo.nickName);

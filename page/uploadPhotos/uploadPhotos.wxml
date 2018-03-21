@@ -28,7 +28,7 @@
                         <checkbox color="#f95b5c" checked="{{checkbox}}" value="{{checkbox}}" name="checkbox" />
                         <view class="agree">
                             <text>我已阅读并且同意链爱的</text>
-                            <navigator url="/page/index/index">服务条款</navigator>
+                            <navigator url="/page/agree/agree">服务条款</navigator>
                         </view>
                     </label>
                 </checkbox-group>

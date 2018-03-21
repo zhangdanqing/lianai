@@ -1,0 +1,13 @@
+.agree-title{
+    font-size: 34rpx;
+    text-align: center;
+    display: block;
+}
+.agree-body{
+    font-size: 28rpx;
+    color: #444;
+    line-height: 38rpx;
+}
+.agree-box{
+    padding: 40rpx;
+}

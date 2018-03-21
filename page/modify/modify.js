@@ -121,7 +121,6 @@ let pageObject = {
     },
     formSubmit: function(e) {
         let dataObj = this.formatData(e.detail.value);
-        console.log(dataObj);
         let name = e.detail.value.name;
         if (name && name.toString().match(regName)) {} else {
             this.toast('请填写1-12位汉字或者数字或者字母的昵称');
@@ -151,20 +150,20 @@ let pageObject = {
             this.toast('请填写您的职业');
             return;
         }
-        if (!dataObj.income) {
-            this.toast('请填写年收入');
+        if (!dataObj.income===-1) {
+            this.toast('请选择年收入');
             return;
         }
         if (!dataObj.height) {
             this.toast('请填写身高');
             return;
         }
-        if (!dataObj.education) {
-            this.toast('请填写您的学历');
+        if (dataObj.education===-1) {
+            this.toast('请选择您的学历');
             return;
         }
-        if (!dataObj.maritalStatus) {
-            this.toast('请填写您当前婚姻状况');
+        if (!dataObj.maritalStatus===-1) {
+            this.toast('请选择您当前婚姻状况');
             return;
         }
         if (!this.data.checkbox) {
