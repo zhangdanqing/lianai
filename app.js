@@ -49,7 +49,13 @@ App({
                 if (res.data && res.data.code === 0) {
                     if (res.data.data) {
                         wx.setStorageSync('isMember', res.data.data.isMember);
-                        this.getUser(openId);
+                        if (res.data.data.isMember) {
+                            this.getUser(openId);
+                        } else {
+                            wx.reLaunch({
+                                url: 'page/regist/regist'
+                            });
+                        }
                     }
                 }
             },
