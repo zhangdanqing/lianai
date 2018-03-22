@@ -50,12 +50,15 @@ checkbox,.agree{
 .checkbox view{
     font-size: 32rpx;
     color:#6a6a6a;
-    display: inline-block;
     padding-top: 2rpx;
 }
-.checkbox view navigator{
-    display: inline-block;
+.checkbox label{
+    float: left;
+}
+.checkbox navigator{
+    float: left;
     color:#334c83;
+    text-decoration: underline;
 }
 .upload-photos{
     width:150rpx;

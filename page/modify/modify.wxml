@@ -129,13 +129,13 @@
             </view>
             <view class="checkbox clearfix">
                 <checkbox-group bindchange="checkboxChange">
-                    <label class="checkbox" >
+                    <label class="clearfix">
                         <checkbox color="#f95b5c" checked="{{checkbox}}" value="{{checkbox}}" name="checkbox" />
                         <view class="agree">
                             <text>我已阅读并且同意链爱的</text>
-                            <navigator url="/page/agree/agree">服务条款</navigator>
                         </view>
                     </label>
+                    <navigator url="/page/regist/regist">服务条款</navigator>
                 </checkbox-group>
             </view>
             <button class="regist-btn" form-type="submit">提交修改</button>
