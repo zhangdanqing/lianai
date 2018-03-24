@@ -31,7 +31,7 @@ let pageObject = {
         wx.request({
             url: domain + '/detail',
             method: 'POST',
-            data: JSON.stringify(dataObj),
+            data: dataObj,
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },

@@ -3,30 +3,29 @@ App({
     onLaunch: function() {
         console.log('App Launch')
         wx.setStorageSync('isMember', false);
-        // wx.login({
-        //     success: (res) => {
-        //         if (res.code) {
-        //             wx.request({
-        //                 url: 'https://api.weixin.qq.com/sns/jscode2session',
-        //                 data: {
-        //                     appid: 'wx5a2a47bdd9497335',
-        //                     secret: 'c5d1fbf42338492343f5e8c8a3e2cacf',
-        //                     js_code: res.code
-        //                 },
-        //                 header: {
-        //                     'content-type': 'application/x-www-form-urlencoded'
-        //                 },
-        //                 success: (res) => {
-        //                     wx.setStorageSync('openId', res.data.openid);
-        //                     this.isMemberRequest(res.data.openid);
-        //                 }
-        //             })
-        //         } else {
-        //             console.log('获取用户登录态失败！' + res.errMsg)
-        //         }
-        //     }
-        // });
-        this.isMemberRequest();
+        wx.login({
+            success: (res) => {
+                if (res.code) {
+                    let dataObj={
+                        js_code: res.code
+                    }
+                    wx.request({
+                        url: this.globalData.domain + '/get_open_id',
+                        method: 'POST',
+                        data: dataObj,
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success: (res) => {
+                            wx.setStorageSync('openId', res.data.openid);
+                            this.isMemberRequest(res.data.openid);
+                        }
+                    })
+                } else {
+                    console.log('获取用户登录态失败！' + res.errMsg)
+                }
+            }
+        });
         wx.getUserInfo({
             success: function(res) {
                 wx.setStorageSync('userName', res.userInfo.nickName);
@@ -36,12 +35,13 @@ App({
     },
     isMemberRequest: function(openId) {
         let dataObj = {
-            open_id: openId
+            //open_id: openId
+            open_id:'whatthename123'
         }
         wx.request({
             url: this.globalData.domain + '/is_member',
             method: 'POST',
-            data: JSON.stringify(dataObj),
+            data: dataObj,
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
@@ -52,9 +52,9 @@ App({
                         if (res.data.data.isMember) {
                             this.getUser(openId);
                         } else {
-                            wx.reLaunch({
-                                url: 'page/regist/regist'
-                            });
+                            // wx.reLaunch({
+                            //     url: '../regist/regist'
+                            // });
                         }
                     }
                 }
@@ -64,12 +64,13 @@ App({
     },
     getUser: function(openId) {
         let dataObj = {
-            open_id: openId
+            //open_id: openId
+            open_id:'whatthename123'
         }
         wx.request({
             url: this.globalData.domain + '/getinfo_by_openid',
             method: 'POST',
-            data: JSON.stringify(dataObj),
+            data: dataObj,
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },

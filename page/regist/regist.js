@@ -10,13 +10,13 @@ let pageObject = {
         originRegion: [],
         industry: "",
         occupation: "",
-        income: null,
+        income: "",
         height: "",
         weight: "",
         nation: "",
-        education: null,
+        education: "",
         school: "",
-        maritalStatus: null,
+        maritalStatus: "",
         incomeArray: ['15万以下', '15-30万', '30万以上'],
         educationArray: ['专科及以下', '本科', '硕士', '博士'],
         maritalArray: ['单身','已婚','离异','丧偶'],
@@ -31,16 +31,16 @@ let pageObject = {
             }
         ],
         booleanArray: [{
-                id: 0,
+                id: 1,
                 name: '是'
             },
             {
-                id: 1,
+                id: 0,
                 name: '否'
             }
         ],
-        purchase: null,
-        carBuying: null,
+        purchase: "",
+        carBuying: "",
         invite:"",
         mateSelection: "",
         hobby: "",
@@ -128,6 +128,14 @@ let pageObject = {
             this.toast('请填写您当前婚姻状况');
             return;
         }
+        if(dataObj.purchase===""){
+            this.toast('请选择您的购房情况');
+            return;
+        }
+        if(dataObj.carBuying===""){
+            this.toast('请选择您的购车情况');
+            return;
+        }
         wx.request({
             url: domain + '/register',
             method: 'POST',
@@ -143,6 +151,8 @@ let pageObject = {
                         url: '../uploadPhotos/uploadPhotos'
                     })
                     wx.setStorageSync('xcxName',name );
+                }else{
+                    this.toast(res.data.msg);
                 }
             },
             fail:(err)=>{
@@ -155,6 +165,12 @@ let pageObject = {
     },
     formatData: function(option) {
         let obj = option;
+        if(obj.purchase!==""){
+            obj.purchase=this.data.booleanArray[obj.purchase].id;
+        }
+        if(obj.carBuying!==""){
+            obj.carBuying=this.data.booleanArray[obj.carBuying].id;
+        }
         obj.openId = wx.setStorageSync('openId');
         obj.gender = this.data.gender;
         obj.addressRegion = obj.addressRegion.join(' ');

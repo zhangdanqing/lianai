@@ -5,7 +5,7 @@ let genderObj = {
 }
 let pageObject = {
     data: {
-        lifePhoto: "",
+        image: "",
         name: "",
         date: "",
         gender: "",
@@ -25,7 +25,7 @@ let pageObject = {
         wx.request({
             url: domain + '/detail',
             method: 'POST',
-            data: JSON.stringify(dataObj),
+            data: dataObj,
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
@@ -34,7 +34,7 @@ let pageObject = {
                     if(res.data.data){
                         this.setData({
                             baseInfor: this.formatBaseData(res.data.data),
-                            lifePhoto: res.data.data.is_life_photo,
+                            image: res.data.data.image,
                             name: res.data.data.name,
                             date: res.data.data.date,
                             gender: this.dictObj(genderObj, res.data.data.gender),

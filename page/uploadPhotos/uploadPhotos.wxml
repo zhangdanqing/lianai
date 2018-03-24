@@ -10,27 +10,27 @@
         <form bindsubmit="formSubmit">
             <view class="section">
                 <view class="section__title">请上传一张身份证正面照片</view>
-                <image wx:for="{{idTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-                <view wx:if="{{isShowAddiD}}" class="upload-image-box">
-                    <image src="../../img/add.png" class="upload-photos" data-show="isShowAddiD" data-arr="idTempFilePaths" bindtap="uploadPhoto"></image>
+                <view class="upload-image-box" data-arr="idTempFilePaths" data-show="isShowAddiD" bindtap="uploadPhoto">
+                    <image wx:for="{{idTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
+                    <image wx:if="{{isShowAddiD}}" src="../../img/add.png" class="upload-photos"></image>
                 </view>
             </view>
             <view class="section">
                 <view class="section__title">请上传最精美生活照一张</view>
-                <image wx:for="{{checkboxTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-                <view wx:if="{{isShowAddPhoto}}" class="upload-image-box">
-                    <image src="../../img/add.png" class="upload-photos" data-show="isShowAddPhoto" data-arr="checkboxTempFilePaths" bindtap="uploadPhoto"></image>
+                <view class="upload-image-box" data-show="isShowAddPhoto" data-arr="checkboxTempFilePaths" bindtap="uploadPhoto">
+                    <image wx:for="{{checkboxTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
+                    <image wx:if="{{isShowAddPhoto}}" src="../../img/add.png" class="upload-photos"></image>
                 </view>
             </view>
             <view class="checkbox clearfix">
                 <checkbox-group bindchange="checkboxChange">
-                    <label class="checkbox" >
+                    <label class="checkbox">
                         <checkbox color="#f95b5c" checked="{{checkbox}}" value="{{checkbox}}" name="checkbox" />
                         <view class="agree">
                             <text>我已阅读并且同意链爱的</text>
-                            <navigator url="/page/agree/agree">服务条款</navigator>
                         </view>
                     </label>
+                    <navigator url="/page/agree/agree">服务条款</navigator>
                 </checkbox-group>
             </view>
             <button class="regist-btn" form-type="submit">注册</button>
@@ -44,4 +44,9 @@
             <button class="success-btn" bindtap="confirm">确定</button>
         </view>
     </view>
+</view>
+<view class="body-view">
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
 </view>
