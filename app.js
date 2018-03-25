@@ -3,6 +3,7 @@ App({
     onLaunch: function() {
         console.log('App Launch')
         wx.setStorageSync('isMember', true);
+        wx.setStorageSync('isRegist', false);
         wx.login({
             success: (res) => {
                 if (res.code) {

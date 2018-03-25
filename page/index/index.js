@@ -24,7 +24,14 @@ let pageObject = {
         hidden: true,
     },
     onShow: function() {
-
+        let isRegist=wx.getStorageSync('isRegist');
+        if(isRegist){
+            this.setData({
+                memberList: []
+            });
+            this.getMemberList();
+            wx.setStorageSync('isRegist', false);
+        }
     },
     onLoad:function(){
         this.setData({

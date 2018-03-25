@@ -147,6 +147,7 @@ let pageObject = {
                         duration: 1500,
                         mask: true
                     })
+                    wx.setStorageSync('isRegist', true);
                     setTimeout(()=>{
                         wx.switchTab({
                             url: '../mine/mine'

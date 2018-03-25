@@ -72,6 +72,7 @@ let pageObject = {
                         successShow:true
                     });
                     wx.setStorageSync('isMember', true);
+                    wx.setStorageSync('isRegist', true);
                 } else {
                     console.log('注册失败');
                     this.setData({
