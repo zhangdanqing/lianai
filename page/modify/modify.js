@@ -29,7 +29,14 @@ let pageObject = {
         incomeArray: ['15万以下', '15-30万', '30万以上'],
         educationArray: ['专科及以下', '本科', '硕士', '博士'],
         maritalArray: ['单身','已婚','离异','丧偶'],
-        genderArrary: [
+        genderArrary: [{
+                id: 1,
+                name: "男"
+            },
+            {
+                id: 2,
+                name: "女"
+            }
         ],
         booleanArray: [{
                 id: 0,
@@ -161,10 +168,25 @@ let pageObject = {
     },
     formatData: function(option) {
         let obj = option;
+        obj.purchase=this.formatObj(obj.purchase,this.data.booleanArray,'id');
+        obj.carBuying=this.formatObj(obj.carBuying,this.data.booleanArray,'id');
+        obj.income=this.formatArr(obj.income,this.data.incomeArray);
+        obj.education=this.formatArr(obj.education,this.data.educationArray);
+        obj.maritalStatus=this.formatArr(obj.maritalStatus,this.data.maritalArray);
         obj.gender = this.data.gender;
         obj.addressRegion = obj.addressRegion.join(' ');
         obj.originRegion = obj.originRegion.join(' ');
         return obj;
+    },
+    formatArr:function(key,arr){
+        if(key!==""){
+            return arr[key]
+        }
+    },
+    formatObj:function(key,obj,name){
+        if(key!==""){
+            return obj[key][name]
+        }
     },
     setInfor:function(){
         let userInfo = getApp().globalData.userInfo;
