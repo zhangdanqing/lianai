@@ -1,23 +1,25 @@
 <import src="../../template/courseList.wxml"/>
-<view class="home-box home-box-new">
-    <view wx-if="{{isToastShow}}">
-        <template is="toast-box" data="{{...toastData}}"/>
+<view class="search-all">
+    <view class="home-box home-box-new">
+        <view wx-if="{{isToastShow}}">
+            <template is="toast-box" data="{{...toastData}}"/>
+        </view>
+        <view class="search-box search-box-new">
+            <icon type="search" size="12" />
+            <input name="searchData" value="{{inputSearch}}"  placeholder="请输入您要搜索的名字" placeholder-class="search-place" bindinput="onInp" bindconfirm="confirmRequest" />
+            <icon wx:if="{{clearIcon}}" class="clear-btn" type="clear" size="14" bindtap="clearContent" />
+        </view>
+        <view class="search-btn" bindtap="searchRequest">搜索</view>
     </view>
-    <view class="search-box search-box-new">
-        <icon type="search" size="12" />
-        <input name="searchData" value="{{inputSearch}}"  placeholder="请输入您要搜索的名字" placeholder-class="search-place" bindinput="onInp" bindconfirm="confirmRequest" />
-        <icon wx:if="{{clearIcon}}" class="clear-btn" type="clear" size="14" bindtap="clearContent" />
-    </view>
-    <view class="search-btn" bindtap="searchRequest">搜索</view>
-</view>
-<text class="search-title">搜索信息</text>
-<view class="search-list">
-    <view class="search-list-li clearfix" bindtap="viewAll" data-n="{{searchList.name}}">
-        <image class="head-portrait" mode="aspectFill" src="{{searchList.image}}"/>
-        <view class="information">
-            <text class="name">{{searchList.name}}</text>
-            <text class="adress">{{searchList.addressRegion}}</text>
-            <text class="year-old">{{searchList.date}}</text>
+    <text class="search-title">搜索信息</text>
+    <view class="search-list">
+        <view class="search-list-li clearfix" bindtap="viewAll" data-n="{{searchList.name}}">
+            <image class="head-portrait" mode="aspectFill" src="{{searchList.image}}"/>
+            <view class="information">
+                <text class="name">{{searchList.name}}</text>
+                <text class="adress">{{searchList.addressRegion}}</text>
+                <text class="year-old">{{searchList.date}}</text>
+            </view>
         </view>
     </view>
 </view>

@@ -4,6 +4,7 @@ page {
   height: 100%;
   font-size: 32rpx;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 input,view,picker,text{
     padding: 0;

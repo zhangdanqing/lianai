@@ -68,3 +68,6 @@
     font-size: 30rpx;
     color:#8e8e8e;
 }
+.search-all{
+    overflow-x: hidden;
+}

@@ -24,6 +24,9 @@ let pageObject = {
         hidden: true,
     },
     onShow: function() {
+
+    },
+    onLoad:function(){
         this.setData({
             memberList: []
         });
