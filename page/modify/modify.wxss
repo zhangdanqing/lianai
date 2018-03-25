@@ -36,6 +36,7 @@ picker,input,.placeholder,textarea,.radio{
     background:#f95b5c;
     color:#fff;
     margin-bottom:115rpx;
+    margin-top: 100rpx;
 }
 .checkbox{
     margin-bottom:42rpx;

@@ -10,7 +10,13 @@ let pageObject = {
         invite: ""
     },
     onLoad: function() {
-        this.refresh();
+        if( ! wx.getStorageSync('invite')){
+            this.refresh();
+        }else{
+            this.setData({
+                invite:wx.getStorageSync('invite')
+            })
+        }
     },
     refresh: function() {
         let dataObj = {
@@ -28,6 +34,7 @@ let pageObject = {
                     this.setData({
                         invite: res.data.data.invite
                     })
+                    wx.setStorageSync('invite',res.data.data.invite);
                 }else{
                     this.toast(res.data.msg);
                 }

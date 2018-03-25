@@ -14,17 +14,6 @@
                     <image wx:if="{{isShowAddPhoto}}" src="../../img/add.png" class="upload-photos"></image>
                 </view>
             </view>
-            <view class="checkbox clearfix">
-                <checkbox-group bindchange="checkboxChange">
-                    <label class="checkbox">
-                        <checkbox color="#f95b5c" checked="{{checkbox}}" value="{{checkbox}}" name="checkbox" />
-                        <view class="agree">
-                            <text>我已阅读并且同意恋爱麦田的</text>
-                        </view>
-                    </label>
-                    <navigator url="/page/agree/agree">服务条款</navigator>
-                </checkbox-group>
-            </view>
             <button class="regist-btn" form-type="submit">确定</button>
         </form>
     </view>

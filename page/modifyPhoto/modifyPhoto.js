@@ -5,7 +5,6 @@ const wxPromise = util.wxPromisify(wx.uploadFile);
 import tempObj from '../../template/courseList';
 let pageObject = {
     data: {
-        checkbox: true,
         tempFilePaths: [],
         isShowAddPhoto: true,
         toastData: {
@@ -77,6 +76,7 @@ let pageObject = {
                         duration: 1500,
                         mask: true
                     });
+                    wx.setStorageSync('isRegist', true);
                     setTimeout(()=>{
                         wx.switchTab({
                             url: '../mine/mine'

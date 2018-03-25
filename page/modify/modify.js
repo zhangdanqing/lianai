@@ -26,7 +26,6 @@ let pageObject = {
         mateSelection: "",
         hobby: "",
         declaration: "",
-        checkbox: true,
         incomeArray: ['15万以下', '15-30万', '30万以上'],
         educationArray: ['专科及以下', '本科', '硕士', '博士'],
         maritalArray: ['单身','已婚','离异','丧偶'],
@@ -124,10 +123,6 @@ let pageObject = {
         }
         if(dataObj.carBuying===""){
             this.toast('请选择您的购车情况');
-            return;
-        }
-        if (!this.data.checkbox) {
-            this.toast('请同意恋爱麦田服务条款');
             return;
         }
         wx.request({
