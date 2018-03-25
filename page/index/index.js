@@ -23,7 +23,10 @@ let pageObject = {
         unLock: true,
         hidden: true,
     },
-    onLoad: function() {
+    onShow: function() {
+        this.setData({
+            memberList: []
+        });
         this.getMemberList();
     },
     getMemberList: function() {

@@ -22,8 +22,7 @@ let pageObject = {
         maritalArray: ['单身','已婚','离异','丧偶'],
         genderArrary: [{
                 id: 1,
-                name: "男",
-                // checked: 'true'
+                name: "男"
             },
             {
                 id: 2,
@@ -165,17 +164,26 @@ let pageObject = {
     },
     formatData: function(option) {
         let obj = option;
-        if(obj.purchase!==""){
-            obj.purchase=this.data.booleanArray[obj.purchase].id;
-        }
-        if(obj.carBuying!==""){
-            obj.carBuying=this.data.booleanArray[obj.carBuying].id;
-        }
-        obj.openId = wx.setStorageSync('openId');
+        obj.purchase=this.formatObj(obj.purchase,this.data.booleanArray,'id');
+        obj.carBuying=this.formatObj(obj.carBuying,this.data.booleanArray,'id');
+        obj.income=this.formatArr(obj.income,this.data.incomeArray);
+        obj.education=this.formatArr(obj.education,this.data.educationArray);
+        obj.maritalStatus=this.formatArr(obj.maritalStatus,this.data.maritalArray);
         obj.gender = this.data.gender;
         obj.addressRegion = obj.addressRegion.join(' ');
         obj.originRegion = obj.originRegion.join(' ');
+        obj.open_id = wx.getStorageSync('openId');
         return obj;
+    },
+    formatArr:function(key,arr){
+        if(key!==""){
+            return arr[key]
+        }
+    },
+    formatObj:function(key,obj,name){
+        if(key!==""){
+            return obj[key][name]
+        }
     }
 }
 Page(pageObject);

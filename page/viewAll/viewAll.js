@@ -52,7 +52,7 @@ let pageObject = {
         })
     },
     formatBaseData: function(data) {
-        let arr = ['industry', 'occupation', 'gender', 'date', 'income', 'height', 'nation', 'education', 'maritalStatus'];
+        let arr = ['industry', 'occupation', 'date', 'income', 'height', 'nation', 'education', 'maritalStatus'];
         let json = data;
         let base = [];
         Object.keys(json).forEach(function(value) {

@@ -46,42 +46,7 @@ let pageObject = {
         isToastShow: false,
     },
     onShow: function() {
-        let userInfo = getApp().globalData.userInfo;
-        this.setData({
-            name: userInfo.name,
-            gender: parseInt(userInfo.gender),
-            date: userInfo.date,
-            addressRegion: userInfo.addressRegion.split(' '),
-            originRegion: userInfo.originRegion.split(' '),
-            industry: userInfo.industry,
-            occupation: userInfo.occupation,
-            income: incomeArray.indexOf(userInfo.income),
-            height: userInfo.height,
-            weight: userInfo.weight,
-            nation: userInfo.nation,
-            education: educationArray.indexOf(userInfo.education),
-            school: userInfo.school,
-            maritalStatus: maritalArray.indexOf(userInfo.maritalStatus),
-            purchase: parseInt(userInfo.purchase),
-            carBuying: parseInt(userInfo.carBuying),
-            mateSelection: userInfo.mateSelection,
-            hobby: userInfo.hobby,
-            declaration: userInfo.declaration,
-            incomeArray: ['15万以下', '15-30万', '30万以上'],
-            educationArray: ['专科及以下', '本科', '硕士', '博士'],
-            maritalArray: ['单身','已婚','离异','丧偶'],
-            genderArrary: [{
-                    id: 1,
-                    name: "男",
-                    checked: parseInt(userInfo.gender)===1?true:false
-                },
-                {
-                    id: 2,
-                    name: "女",
-                    checked: parseInt(userInfo.gender)===2?true:false
-                }
-            ],
-        })
+        this.getUser();
     },
     radioChange: function(e) {
         this.setData({
@@ -169,7 +134,7 @@ let pageObject = {
             method: 'POST',
             data: {
                 "data": JSON.stringify(dataObj),
-                "open_id" : wx.getStorageSync('openId')
+                "open_id": wx.getStorageSync('openId')
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
@@ -203,6 +168,71 @@ let pageObject = {
         obj.addressRegion = obj.addressRegion.join(' ');
         obj.originRegion = obj.originRegion.join(' ');
         return obj;
+    },
+    getUser: function() {
+        let dataObj = {
+            open_id: wx.getStorageSync('openId')
+        }
+        wx.request({
+            url: domain + '/getinfo_by_openid',
+            method: 'POST',
+            data: dataObj,
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: (res) => {
+                if (res.data && res.data.code === 0) {
+                    if (res.data.data) {
+                        wx.setStorageSync('gender', res.data.data.gender);
+                        wx.setStorageSync('name', res.data.data.name);
+                        getApp().globalData.userInfo = res.data.data;
+                        this.setInfor(res.data.data);
+                    }
+                } else if (res.data.code === -1) {
+                    wx.setStorageSync('gender', -1);
+                }
+            },
+            fail: () => {}
+        })
+    },
+    setInfor:function(data){
+        console.log(data);
+        let userInfo = data;
+        this.setData({
+            name: userInfo.name,
+            gender: parseInt(userInfo.gender),
+            date: userInfo.date,
+            addressRegion: userInfo.addressRegion.split(' '),
+            originRegion: userInfo.originRegion.split(' '),
+            industry: userInfo.industry,
+            occupation: userInfo.occupation,
+            income:this.data.incomeArray.indexOf(userInfo.income),
+            height: userInfo.height,
+            weight: userInfo.weight,
+            nation: userInfo.nation,
+            education: this.data.educationArray.indexOf(userInfo.education),
+            school: userInfo.school,
+            maritalStatus: this.data.maritalArray.indexOf(userInfo.maritalStatus),
+            purchase: parseInt(userInfo.purchase),
+            carBuying: parseInt(userInfo.carBuying),
+            mateSelection: userInfo.mateSelection,
+            hobby: userInfo.hobby,
+            declaration: userInfo.declaration,
+            incomeArray: ['15万以下', '15-30万', '30万以上'],
+            educationArray: ['专科及以下', '本科', '硕士', '博士'],
+            maritalArray: ['单身','已婚','离异','丧偶'],
+            genderArrary: [{
+                    id: 1,
+                    name: "男",
+                    checked: parseInt(userInfo.gender)===1?true:false
+                },
+                {
+                    id: 2,
+                    name: "女",
+                    checked: parseInt(userInfo.gender)===2?true:false
+                }
+            ],
+        })
     }
 }
 Page(pageObject)
