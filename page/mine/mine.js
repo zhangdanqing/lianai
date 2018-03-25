@@ -1,3 +1,4 @@
+const domain = getApp().globalData.domain;
 import tempObj from '../../template/courseList';
 let pageObject = {
     data: {
@@ -11,19 +12,7 @@ let pageObject = {
                 modalHidden: false
             })
         }
-        let image = getApp().globalData.userInfo.image;
-        let name = getApp().globalData.userInfo.name;
-        console.log(image);
-        if(image){
-            this.setData({
-                headPortrait: image
-            })
-        }
-        if(name){
-            this.setData({
-                userName: name
-            })
-        }
+        this.getUser();
     },
     onReady: function() {
 
@@ -59,7 +48,44 @@ let pageObject = {
             success: (res) => {
             }
         })
-    }
+    },
+    getUser: function() {
+        let dataObj = {
+            open_id: wx.getStorageSync('openId')
+        }
+        wx.request({
+            url: domain + '/getinfo_by_openid',
+            method: 'POST',
+            data: dataObj,
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: (res) => {
+                if (res.data && res.data.code === 0) {
+                    if (res.data.data) {
+                        wx.setStorageSync('gender', res.data.data.gender);
+                        wx.setStorageSync('name', res.data.data.name);
+                        getApp().globalData.userInfo = res.data.data;
+                        let image = res.data.data.image;
+                        let name = res.data.data.name;
+                        if(image){
+                            this.setData({
+                                headPortrait: image
+                            })
+                        }
+                        if(name){
+                            this.setData({
+                                userName: name
+                            })
+                        }
+                    }
+                } else if (res.data.code === -1) {
+                    wx.setStorageSync('gender', -1);
+                }
+            },
+            fail: () => {}
+        })
+    },
 }
 for(let name in tempObj)
 {

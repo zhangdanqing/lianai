@@ -46,7 +46,7 @@ let pageObject = {
         isToastShow: false,
     },
     onShow: function() {
-        this.getUser();
+        this.setInfor();
     },
     radioChange: function(e) {
         this.setData({
@@ -166,35 +166,8 @@ let pageObject = {
         obj.originRegion = obj.originRegion.join(' ');
         return obj;
     },
-    getUser: function() {
-        let dataObj = {
-            open_id: wx.getStorageSync('openId')
-        }
-        wx.request({
-            url: domain + '/getinfo_by_openid',
-            method: 'POST',
-            data: dataObj,
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: (res) => {
-                if (res.data && res.data.code === 0) {
-                    if (res.data.data) {
-                        wx.setStorageSync('gender', res.data.data.gender);
-                        wx.setStorageSync('name', res.data.data.name);
-                        getApp().globalData.userInfo = res.data.data;
-                        this.setInfor(res.data.data);
-                    }
-                } else if (res.data.code === -1) {
-                    wx.setStorageSync('gender', -1);
-                }
-            },
-            fail: () => {}
-        })
-    },
-    setInfor:function(data){
-        console.log(data);
-        let userInfo = data;
+    setInfor:function(){
+        let userInfo = getApp().globalData.userInfo;
         this.setData({
             name: userInfo.name,
             gender: parseInt(userInfo.gender),
