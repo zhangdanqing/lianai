@@ -22,5 +22,5 @@
 	</view>
 </view>
 <view>
-	<modal title="提示" hidden="{{modalHidden}}" no-cancel="true" confirm-text="确定" bindconfirm="modalBindconfirm">你还不是链爱会员，请前往注册</modal>
+	<modal title="提示" hidden="{{modalHidden}}" no-cancel="true" confirm-text="确定" bindconfirm="modalBindconfirm">你还不是恋爱麦田会员，请前往注册</modal>
 </view>

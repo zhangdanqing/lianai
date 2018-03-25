@@ -4,7 +4,7 @@
         <template is="toast-box" data="{{...toastData}}" />
     </view>
     <image class="banner" mode="aspectFill" src="../../img/banner1.png"></image>
-    <text class="title">填写信息 成为链爱会员</text>
+    <text class="title">填写信息 成为恋爱麦田会员</text>
     <view class="block"></view>
     <view class="content">
         <form bindsubmit="formSubmit">
@@ -139,7 +139,7 @@
             <view class="checkbox clearfix">
                 <checkbox color="#f95b5c" checked="true" value="{{checkbox}}" name="checkbox" />
                 <view class="agree">
-                    <text>我已阅读并且同意链爱的</text>
+                    <text>我已阅读并且同意恋爱麦田的</text>
                     <navigator url="/page/index/index">服务条款</navigator>
                 </view>
             </view> -->

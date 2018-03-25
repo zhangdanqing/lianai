@@ -19,7 +19,7 @@
                     <label class="checkbox">
                         <checkbox color="#f95b5c" checked="{{checkbox}}" value="{{checkbox}}" name="checkbox" />
                         <view class="agree">
-                            <text>我已阅读并且同意链爱的</text>
+                            <text>我已阅读并且同意恋爱麦田的</text>
                         </view>
                     </label>
                     <navigator url="/page/agree/agree">服务条款</navigator>

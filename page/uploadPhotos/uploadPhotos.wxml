@@ -4,7 +4,7 @@
         <template is="toast-box" data="{{...toastData}}"/>
     </view>
     <image class="banner" mode="aspectFill" src="../../img/banner1.png"></image>
-    <text class="title">上传信息 成为链爱会员</text>
+    <text class="title">上传信息 成为恋爱麦田会员</text>
     <view class="block"></view>
     <view class="content">
         <form bindsubmit="formSubmit">
@@ -27,7 +27,7 @@
                     <label class="checkbox">
                         <checkbox color="#f95b5c" checked="{{checkbox}}" value="{{checkbox}}" name="checkbox" />
                         <view class="agree">
-                            <text>我已阅读并且同意链爱的</text>
+                            <text>我已阅读并且同意恋爱麦田的</text>
                         </view>
                     </label>
                     <navigator url="/page/agree/agree">服务条款</navigator>
@@ -39,7 +39,7 @@
     <view class="success-opa" wx:if="{{successShow}}">
         <view class="success-content">
             <text>恭喜{{xcxName}}注册成功</text>
-            <text>请添加管理员微信，发送此页截图给管理员，加入链爱微信社群</text>
+            <text>请添加管理员微信，发送此页截图给管理员，加入恋爱麦田微信社群</text>
             <image class="code-image" src="../../img/code.jpg"></image>
             <button class="success-btn" bindtap="confirm">确定</button>
         </view>

@@ -43,7 +43,7 @@ let pageObject = {
             return;
         }
         if (!this.data.checkbox) {
-            this.toast('请同意链爱服务条款');
+            this.toast('请同意恋爱麦田服务条款');
             return;
         }
         this.setData({
