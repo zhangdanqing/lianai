@@ -174,7 +174,9 @@ let pageObject = {
             url: domain + '/change_detail',
             method: 'POST',
             data: {
-                "data": JSON.stringify(dataObj)
+                "data": JSON.stringify(dataObj),
+                //"open_id" : wx.getStorageSync('openId')
+                "open_id" :'whatthename123'
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
@@ -204,7 +206,6 @@ let pageObject = {
     },
     formatData: function(option) {
         let obj = option;
-        obj.open_id = wx.getStorageSync('openId');
         obj.gender = this.data.gender;
         obj.addressRegion = obj.addressRegion.join(' ');
         obj.originRegion = obj.originRegion.join(' ');
