@@ -42,7 +42,7 @@ let pageObject = {
                             declaration: res.data.data.declaration,
                             hobby: res.data.data.hobby,
                             mateSelection: res.data.data.mateSelection,
-                            hasInvite: res.data.data.invite ? '是' : '否'
+                            hasInvite: res.data.data.guarantor ? '是' : '否'
                         })
                     }
                 }
