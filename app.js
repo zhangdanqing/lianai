@@ -2,7 +2,7 @@ const util = require('./util/util.js');
 App({
     onLaunch: function() {
         console.log('App Launch')
-        wx.setStorageSync('isMember', false);
+        wx.setStorageSync('isMember', true);
         wx.login({
             success: (res) => {
                 if (res.code) {
@@ -50,10 +50,6 @@ App({
                         wx.setStorageSync('isMember', res.data.data.isMember);
                         if (res.data.data.isMember) {
                             this.getUser(openId);
-                        } else {
-                            // wx.reLaunch({
-                            //     url: '../regist/regist'
-                            // });
                         }
                     }
                 }

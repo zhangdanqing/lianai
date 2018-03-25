@@ -11,9 +11,15 @@ let pageObject = {
             })
         }
         let image = getApp().globalData.userInfo.is_life_photo;
+        let name = getApp().globalData.userInfo.name;
         if(image && image.indexOf('http://') !== -1 || image.indexOf('http://') !== -1){
             this.setData({
                 headPortrait: image
+            })
+        }
+        if(name){
+            this.setData({
+                userName: name
             })
         }
     },
