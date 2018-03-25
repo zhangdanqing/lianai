@@ -2,8 +2,8 @@ const domain = getApp().globalData.domain;
 import tempObj from '../../template/courseList';
 let pageObject = {
     data: {
-        headPortrait:wx.getStorageSync('avatarUrl'),
-        userName:wx.getStorageSync('userName'),
+        headPortrait:"",
+        userName:"",
         modalHidden: true,
     },
     onShow: function() {
