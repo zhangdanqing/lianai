@@ -1,6 +1,6 @@
 <view class="view-all">
     <view class="header clearfix">
-        <image class="head-photo" mode="aspectFill" src="{{image}}"/>
+        <image class="head-photo" mode="aspectFill" src="{{image}}" bindtap="previewImage" data-src="{{image}}"/>
         <view class="header-infor">
             <text class="header-infor-title">{{name}}</text>
             <view class="infor-list">

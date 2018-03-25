@@ -13,14 +13,14 @@ let pageObject = {
         declaration: "",
         hobby: "",
         mateSelection: "",
-        hasInvite:"",
+        hasInvite: "",
     },
     onLoad: function(option) {
         this.detailRequest(option.name);
     },
     detailRequest: function(name) {
-        let dataObj={
-            name:name
+        let dataObj = {
+            name: name
         }
         wx.request({
             url: domain + '/detail',
@@ -31,7 +31,7 @@ let pageObject = {
             },
             success: (res) => {
                 if (res.data && res.data.code === 0) {
-                    if(res.data.data){
+                    if (res.data.data) {
                         this.setData({
                             baseInfor: this.formatBaseData(res.data.data),
                             image: res.data.data.image,
@@ -40,8 +40,8 @@ let pageObject = {
                             gender: this.dictObj(genderObj, res.data.data.gender),
                             declaration: res.data.data.declaration,
                             hobby: res.data.data.hobby,
-                            mateSelection:res.data.data.mateSelection,
-                            hasInvite:res.data.data.invite?'是':'否'
+                            mateSelection: res.data.data.mateSelection,
+                            hasInvite: res.data.data.invite ? '是' : '否'
                         })
                     }
                 }
@@ -70,6 +70,15 @@ let pageObject = {
         } else {
             return "";
         }
+    },
+    previewImage: function(e) {
+        let current = e.target.dataset.src;
+        wx.previewImage({
+            current: current,
+            urls: [current],
+            success: (res) => {
+            }
+        })
     }
 }
 Page(pageObject);

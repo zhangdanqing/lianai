@@ -1,6 +1,5 @@
 const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
-wx.setStorageSync('isMember', false);
 let page = 0;
 let bFlag = true;
 let pageObject = {
