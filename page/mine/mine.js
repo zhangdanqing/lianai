@@ -11,9 +11,10 @@ let pageObject = {
                 modalHidden: false
             })
         }
-        let image = getApp().globalData.userInfo.is_life_photo;
+        let image = getApp().globalData.userInfo.image;
         let name = getApp().globalData.userInfo.name;
-        if(image && image.indexOf('http://') !== -1 || image.indexOf('http://') !== -1){
+        console.log(image);
+        if(image){
             this.setData({
                 headPortrait: image
             })
@@ -48,6 +49,15 @@ let pageObject = {
         })
         this.setData({
             modalHidden: true
+        })
+    },
+    previewImage: function(e) {
+        let current = e.target.dataset.src;
+        wx.previewImage({
+            current: current,
+            urls: [current],
+            success: (res) => {
+            }
         })
     }
 }

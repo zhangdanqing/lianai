@@ -1,6 +1,6 @@
 <view class="personal">
 	<view class="header-personal">
-		<image class="head-portrait" src="{{headPortrait}}"></image>
+		<image class="head-portrait" src="{{headPortrait}}" data-src="{{headPortrait}}" bindtap="previewImage"></image>
 		<text class="name">{{userName}}</text>
 	</view>
 	<view style="background:#f3f4f7;height:20rpx;"></view>
