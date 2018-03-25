@@ -41,10 +41,6 @@ let pageObject = {
             this.toast('请上传最精美生活照一张');
             return;
         }
-        if (!this.data.checkbox) {
-            this.toast('请同意恋爱麦田服务条款');
-            return;
-        }
         this.setData({
             hidden: false
         });
