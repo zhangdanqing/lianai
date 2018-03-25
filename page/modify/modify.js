@@ -26,8 +26,6 @@ let pageObject = {
         hobby: "",
         declaration: "",
         checkbox: true,
-        idTempFilePaths: [],
-        checkboxTempFilePaths:[],
         incomeArray: ['15万以下', '15-30万', '30万以上'],
         educationArray: ['专科及以下', '本科', '硕士', '博士'],
         maritalArray: ['单身','已婚','离异','丧偶'],
@@ -51,7 +49,7 @@ let pageObject = {
         let userInfo = getApp().globalData.userInfo;
         this.setData({
             name: userInfo.name,
-            gender: userInfo.gender,
+            gender: parseInt(userInfo.gender),
             date: userInfo.date,
             addressRegion: userInfo.addressRegion.split(' '),
             originRegion: userInfo.originRegion.split(' '),
@@ -64,25 +62,23 @@ let pageObject = {
             education: educationArray.indexOf(userInfo.education),
             school: userInfo.school,
             maritalStatus: maritalArray.indexOf(userInfo.maritalStatus),
-            purchase: userInfo.purchase,
-            carBuying: userInfo.carBuying,
+            purchase: parseInt(userInfo.purchase),
+            carBuying: parseInt(userInfo.carBuying),
             mateSelection: userInfo.mateSelection,
             hobby: userInfo.hobby,
             declaration: userInfo.declaration,
-            idTempFilePaths: [userInfo.identi_url],
-            checkboxTempFilePaths:[userInfo.is_life_photo],
             incomeArray: ['15万以下', '15-30万', '30万以上'],
             educationArray: ['专科及以下', '本科', '硕士', '博士'],
             maritalArray: ['单身','已婚','离异','丧偶'],
             genderArrary: [{
                     id: 1,
                     name: "男",
-                    checked: userInfo.gender===1?true:false
+                    checked: parseInt(userInfo.gender)===1?true:false
                 },
                 {
                     id: 2,
                     name: "女",
-                    checked: userInfo.gender===2?true:false
+                    checked: parseInt(userInfo.gender)===2?true:false
                 }
             ],
         })
@@ -93,19 +89,9 @@ let pageObject = {
         })
     },
     bindPickerChange: function(e) {
-        let key = e.target.dataset.key;
+        let key = e.currentTarget.dataset.key;
         this.setData({
             [key]: e.detail.value
-        })
-    },
-    uploadPhoto: function(e) {
-        wx.chooseImage({
-            success: (res) => {
-                var tempFilePaths = e.target.dataset.arr;
-                this.setData({
-                    [tempFilePaths]: res.tempFilePaths
-                })
-            }
         })
     },
     checkboxChange: function(e) {
@@ -166,6 +152,14 @@ let pageObject = {
             this.toast('请选择您当前婚姻状况');
             return;
         }
+        if(dataObj.purchase===""){
+            this.toast('请选择您的购房情况');
+            return;
+        }
+        if(dataObj.carBuying===""){
+            this.toast('请选择您的购车情况');
+            return;
+        }
         if (!this.data.checkbox) {
             this.toast('请同意链爱服务条款');
             return;
@@ -175,8 +169,7 @@ let pageObject = {
             method: 'POST',
             data: {
                 "data": JSON.stringify(dataObj),
-                //"open_id" : wx.getStorageSync('openId')
-                "open_id" :'whatthename123'
+                "open_id" : wx.getStorageSync('openId')
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
@@ -186,14 +179,14 @@ let pageObject = {
                     wx.showToast({
                         title: '修改成功',
                         icon: 'succes',
-                        duration: 1000,
+                        duration: 1500,
                         mask: true
                     })
-                    setTimeout(function() {
-                        wx.navigateBack({
+                    setTimeout(()=>{
+                        wx.switchTab({
                             url: '../mine/mine'
                         })
-                    }, 1000)
+                    }, 1500)
                 }
             },
             fail: function(err) {
@@ -209,8 +202,6 @@ let pageObject = {
         obj.gender = this.data.gender;
         obj.addressRegion = obj.addressRegion.join(' ');
         obj.originRegion = obj.originRegion.join(' ');
-        obj.is_life_photo = this.data.idTempFilePaths.join('');
-        obj.identi_url = this.data.checkboxTempFilePaths.join('');
         return obj;
     }
 }

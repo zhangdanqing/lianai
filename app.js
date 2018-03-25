@@ -35,8 +35,7 @@ App({
     },
     isMemberRequest: function(openId) {
         let dataObj = {
-            //open_id: openId
-            open_id:'whatthename123'
+            open_id: openId
         }
         wx.request({
             url: this.globalData.domain + '/is_member',
@@ -64,8 +63,7 @@ App({
     },
     getUser: function(openId) {
         let dataObj = {
-            //open_id: openId
-            open_id:'whatthename123'
+            open_id: openId
         }
         wx.request({
             url: this.globalData.domain + '/getinfo_by_openid',

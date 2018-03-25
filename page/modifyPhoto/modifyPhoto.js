@@ -5,23 +5,13 @@ const wxPromise = util.wxPromisify(wx.uploadFile);
 let pageObject = {
     data: {
         checkbox: true,
-        idTempFilePaths: [],
-        checkboxTempFilePaths: [],
-        isShowAddiD: true,
+        tempFilePaths: [],
         isShowAddPhoto: true,
         toastData: {
             toastMsg: "",
         },
         isToastShow: false,
-        xcxName: "",
-        successShow: false,
         hidden: true,
-    },
-    onShow: function() {
-
-    },
-    onReady: function() {
-
     },
     uploadPhoto: function(e) {
         wx.chooseImage({
@@ -47,11 +37,7 @@ let pageObject = {
         })
     },
     formSubmit: function(e) {
-        if (this.data.idTempFilePaths.length === 0) {
-            this.toast('请上传一张身份证正面照片');
-            return;
-        }
-        if (this.data.checkboxTempFilePaths.length === 0) {
+        if (this.data.tempFilePaths.length === 0) {
             this.toast('请上传最精美生活照一张');
             return;
         }
@@ -62,24 +48,7 @@ let pageObject = {
         this.setData({
             hidden: false
         });
-        new Promise((resolve) => {
-            Promise.all([this.uploadFile('/up_identity', this.data.idTempFilePaths[0], 'identity'), this.uploadFile('/up_life', this.data.checkboxTempFilePaths[0], 'life')]).then((values) => {
-                if (values[0] && values[1]) {
-                    console.log('注册成功');
-                    this.setData({
-                        hidden: true,
-                        xcxName:wx.getStorageSync('xcxName'),
-                        successShow:true
-                    });
-                } else {
-                    console.log('注册失败');
-                    this.setData({
-                        hidden: true
-                    });
-                    this.toast('注册失败,请稍后再试');
-                }
-            });
-        });
+        this.uploadFile('/up_life', this.data.tempFilePaths[0], 'life');
     },
     uploadFile: function(url, path, name) {
         return new Promise((resolve) => {
@@ -101,30 +70,33 @@ let pageObject = {
                     json = res.data;
                 }
                 if (json && json.code === 0) {
-                    console.log(name + '成功');
-                    resolve(true);
+                    wx.showToast({
+                        title: '修改成功',
+                        icon: 'succes',
+                        duration: 1500,
+                        mask: true
+                    });
+                    setTimeout(()=>{
+                        wx.switchTab({
+                            url: '../mine/mine'
+                        })
+                    }, 1500)
                 } else {
-                    console.log(name + '失败');
-                    resolve(false);
+                    this.toast('修改失败,请稍后再试');
                 }
+                this.setData({
+                    hidden:true
+                });
             }, res => {
-                console.log(json + '失败');
-                resolve(false);
+                this.toast('修改失败,请稍后再试');
+                this.setData({
+                    hidden: true
+                });
             });
         });
     },
     toast: function(content) {
         utilData.toast(content, 'toastData.toastMsg', 'isToastShow', this);
-    },
-    confirm: function() {
-        this.setData({
-            successShow: false
-        })
-        setTimeout(() => {
-            wx.switchTab({
-                url: '../index/index'
-            })
-        }, 1500)
     }
 }
 Page(pageObject);

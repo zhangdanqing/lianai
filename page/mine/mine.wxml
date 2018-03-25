@@ -11,6 +11,10 @@
 			<image class="sign-out-icon fl" src="../../img/modify.png"></image>
 			<text class="sign-out fl">修改资料</text>
 		</view>
+		<view class="clearfix personal-list" bindtap="modifyPhotoTap">
+			<image class="sign-out-icon fl" src="../../img/pic.png"></image>
+			<text class="sign-out fl">修改照片</text>
+		</view>
 		<view class="clearfix personal-list" bindtap="inviteTap">
 			<image class="sign-out-icon fl" src="../../img/invite.png"></image>
 			<text class="sign-out fl">立即邀请</text>

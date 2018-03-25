@@ -10,6 +10,12 @@ let pageObject = {
                 modalHidden: false
             })
         }
+        let image = getApp().globalData.userInfo.is_life_photo;
+        if(image){
+            this.setData({
+                headPortrait: img
+            })
+        }
     },
     onReady: function() {
 
@@ -17,6 +23,11 @@ let pageObject = {
     modifyTap:function(){
         wx.navigateTo({
             url:'../modify/modify'
+        })
+    },
+    modifyPhotoTap:function(){
+        wx.navigateTo({
+            url:'../modifyPhoto/modifyPhoto'
         })
     },
     inviteTap:function(){

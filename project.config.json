@@ -75,6 +75,12 @@
 					"name": "agree",
 					"pathName": "page/agree/agree",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "modifyPhoto",
+					"pathName": "page/modifyPhoto/modifyPhoto",
+					"query": ""
 				}
 			]
 		}

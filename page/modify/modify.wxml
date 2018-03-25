@@ -117,16 +117,6 @@
                 <view class="section__title">恋爱宣言</view>
                 <textarea value="{{declaration}}" name="declaration" placeholder-class="placeholder" placeholder="选填" auto-height/>
             </view>
-            <view class="section">
-                <view class="section__title">修改身份证正面照片</view>
-                <image wx:for="{{idTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-                <text data-arr="idTempFilePaths" class="change-image" bindtap="uploadPhoto">点击修改</text>
-            </view>
-            <view class="section">
-                <view class="section__title">修改生活照</view>
-                <image wx:for="{{checkboxTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-                <text data-arr="checkboxTempFilePaths" class="change-image" bindtap="uploadPhoto">点击修改</text>
-            </view>
             <view class="checkbox clearfix">
                 <checkbox-group bindchange="checkboxChange">
                     <label class="clearfix">

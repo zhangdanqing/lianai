@@ -88,10 +88,11 @@ let pageObject = {
         }
         this.jumpToRegist(searchJump);
     },
-    viewAll: function() {
+    viewAll: function(e) {
+        let n=e.currentTarget.dataset.n;
         let viewAllJump = function() {
             wx.navigateTo({
-                url: '../viewAll/viewAll'
+                url: '../viewAll/viewAll?name='+n
             })
         }
         this.jumpToRegist(viewAllJump);

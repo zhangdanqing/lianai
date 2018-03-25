@@ -122,27 +122,6 @@
                 <view class="section__title">请填写您的恋爱宣言</view>
                 <textarea value="{{declaration}}" name="declaration" placeholder-class="placeholder" placeholder="选填" auto-height/>
             </view>
-            <!-- <view class="section">
-                <view class="section__title">请上传身份证正面照片</view>
-                <image wx:for="{{idTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-                <view class="upload-image-box">
-                    <image src="../../img/add.png" class="upload-photos" data-arr="idTempFilePaths" bindtap="uploadPhoto"></image>
-                </view>
-            </view>
-            <view class="section">
-                <view class="section__title">请上传头像</view>
-                <image wx:for="{{checkboxTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-                <view class="upload-image-box">
-                    <image src="../../img/add.png" class="upload-photos" data-arr="checkboxTempFilePaths" bindtap="uploadPhoto"></image>
-                </view>
-            </view>
-            <view class="checkbox clearfix">
-                <checkbox color="#f95b5c" checked="true" value="{{checkbox}}" name="checkbox" />
-                <view class="agree">
-                    <text>我已阅读并且同意链爱的</text>
-                    <navigator url="/page/index/index">服务条款</navigator>
-                </view>
-            </view> -->
             <button class="regist-btn" form-type="submit">下一步</button>
         </form>
     </view>

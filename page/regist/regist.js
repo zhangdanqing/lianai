@@ -65,7 +65,7 @@ let pageObject = {
         })
     },
     bindPickerChange: function(e) {
-        let key = e.target.dataset.key;
+        let key = e.currentTarget.dataset.key;
         this.setData({
             [key]: e.detail.value
         })
@@ -73,7 +73,7 @@ let pageObject = {
     uploadPhoto: function(e) {
         wx.chooseImage({
             success: (res) => {
-                var tempFilePaths = e.target.dataset.arr;
+                var tempFilePaths = e.currentTarget.dataset.arr;
                 this.setData({
                     [tempFilePaths]: res.tempFilePaths
                 })

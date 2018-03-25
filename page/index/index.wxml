@@ -21,7 +21,7 @@
     <view class="recommend-box">
         <text class="recommend-title">今日推荐</text>
         <view class="recommend-list clearfix">
-            <view wx:for="{{memberList}}" wx:key="name" class="recommend-list-item" bindtap="viewAll" data-n="">
+            <view wx:for="{{memberList}}" wx:key="name" class="recommend-list-item" bindtap="viewAll" data-n="{{item.name}}">
                 <image mode="aspectFill" src="{{item.image}}" class="slide-image"/>
                 <text class="title">{{item.name}}</text>
                 <text class="describ">{{item.addressRegion}}</text>
