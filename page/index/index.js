@@ -1,5 +1,6 @@
 const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
+import tempObj from '../../template/courseList';
 let page = 0;
 let bFlag = true;
 let pageObject = {
@@ -129,5 +130,9 @@ let pageObject = {
             fn();
         }
     }
+}
+for(let name in tempObj)
+{
+    pageObject[name] = tempObj[name]
 }
 Page(pageObject)

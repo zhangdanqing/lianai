@@ -1,3 +1,4 @@
+import tempObj from '../../template/courseList';
 let pageObject = {
     data: {
         headPortrait:wx.getStorageSync('avatarUrl'),
@@ -49,5 +50,9 @@ let pageObject = {
             modalHidden: true
         })
     }
+}
+for(let name in tempObj)
+{
+    pageObject[name] = tempObj[name]
 }
 Page(pageObject);

@@ -59,11 +59,11 @@
                 </picker>
             </view>
             <view class="section">
-                <view class="section__title">请输入身高</view>
+                <view class="section__title">请输入身高（CM）</view>
                 <input value="{{height}}" name="height" placeholder-class="placeholder" placeholder="必填" />
             </view>
             <view class="section">
-                <view class="section__title">请输入体重</view>
+                <view class="section__title">请输入体重（KG）</view>
                 <input value="{{weight}}" name="weight" placeholder-class="placeholder" placeholder="选填" />
             </view>
             <view class="section">

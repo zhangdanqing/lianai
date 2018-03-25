@@ -17,7 +17,7 @@
 		</view>
 		<view class="clearfix personal-list" bindtap="inviteTap">
 			<image class="sign-out-icon fl" src="../../img/invite.png"></image>
-			<text class="sign-out fl">立即邀请</text>
+			<text class="sign-out fl">我的邀请码</text>
 		</view>
 	</view>
 </view>

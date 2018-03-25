@@ -2,6 +2,7 @@ const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
 const util = require('../../util/util');
 const wxPromise = util.wxPromisify(wx.uploadFile);
+import tempObj from '../../template/courseList';
 let pageObject = {
     data: {
         checkbox: true,
@@ -98,5 +99,9 @@ let pageObject = {
     toast: function(content) {
         utilData.toast(content, 'toastData.toastMsg', 'isToastShow', this);
     }
+}
+for(let name in tempObj)
+{
+    pageObject[name] = tempObj[name]
 }
 Page(pageObject);

@@ -1,5 +1,6 @@
 const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
+import tempObj from '../../template/courseList';
 let regName = /^[a-zA-Z0-9_\u4e00-\u9fa5]{1,12}$/;
 let incomeArray= ['15万以下', '15-30万', '30万以上'];
 let educationArray= ['专科及以下', '本科', '硕士', '博士'];
@@ -235,5 +236,9 @@ let pageObject = {
             ],
         })
     }
+}
+for(let name in tempObj)
+{
+    pageObject[name] = tempObj[name]
 }
 Page(pageObject)

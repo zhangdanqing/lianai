@@ -1,5 +1,6 @@
 const domain = getApp().globalData.domain;
 const utilData = getApp().globalData.utilData;
+import tempObj from '../../template/courseList';
 let pageObject = {
     data: {
         toastData: {
@@ -39,5 +40,9 @@ let pageObject = {
     toast: function(content) {
         utilData.toast(content, 'toastData.toastMsg', 'isToastShow', this);
     }
+}
+for(let name in tempObj)
+{
+    pageObject[name] = tempObj[name]
 }
 Page(pageObject);

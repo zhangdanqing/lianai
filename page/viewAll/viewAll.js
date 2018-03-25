@@ -1,4 +1,5 @@
 const domain = getApp().globalData.domain;
+import tempObj from '../../template/courseList';
 let genderObj = {
     1: '男',
     2: '女'
@@ -80,5 +81,9 @@ let pageObject = {
             }
         })
     }
+}
+for(let name in tempObj)
+{
+    pageObject[name] = tempObj[name]
 }
 Page(pageObject);
