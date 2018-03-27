@@ -66,13 +66,14 @@ let pageObject = {
                     json = res.data;
                 }
                 if (json && json.code === 0) {
+                    getApp().globalData.bChangeI = true;
+                    getApp().globalData.bChangeM = true;
                     wx.showToast({
                         title: '修改成功',
                         icon: 'succes',
                         duration: 1500,
                         mask: true
                     });
-                    wx.setStorageSync('isRegist', true);
                     setTimeout(()=>{
                         wx.switchTab({
                             url: '../mine/mine'

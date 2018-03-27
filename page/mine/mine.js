@@ -12,10 +12,18 @@ let pageObject = {
                 modalHidden: false
             })
         }
-        this.getUser();
+        let bChangeM=getApp().globalData.bChangeM;
+        if(bChangeM){
+            this.getUser();
+            getApp().globalData.bChangeM=false;
+        }
     },
-    onReady: function() {
-
+    onLoad:function(){
+        let userInfo = getApp().globalData.userInfo;
+        this.setData({
+            headPortrait:userInfo.image,
+            userName:userInfo.name
+        })
     },
     modifyTap:function(){
         wx.navigateTo({
@@ -64,7 +72,6 @@ let pageObject = {
                 if (res.data && res.data.code === 0) {
                     if (res.data.data) {
                         wx.setStorageSync('gender', res.data.data.gender);
-                        wx.setStorageSync('name', res.data.data.name);
                         getApp().globalData.userInfo = res.data.data;
                         let image = res.data.data.image;
                         let name = res.data.data.name;
@@ -78,6 +85,8 @@ let pageObject = {
                                 userName: name
                             })
                         }
+                    }else{
+                        wx.setStorageSync('gender', -1);
                     }
                 } else if (res.data.code === -1) {
                     wx.setStorageSync('gender', -1);

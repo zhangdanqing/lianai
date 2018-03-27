@@ -67,13 +67,14 @@ let pageObject = {
             Promise.all([this.uploadFile('/up_identity', this.data.idTempFilePaths[0], 'identity'), this.uploadFile('/up_life', this.data.checkboxTempFilePaths[0], 'life')]).then((values) => {
                 if (values[0] && values[1]) {
                     console.log('注册成功');
+                    wx.setStorageSync('isMember', true);
+                    getApp().globalData.bChangeI = true;
+                    getApp().globalData.bChangeM = true;
                     this.setData({
                         hidden: true,
                         xcxName:wx.getStorageSync('xcxName'),
                         successShow:true
                     });
-                    wx.setStorageSync('isMember', true);
-                    wx.setStorageSync('isRegist', true);
                 } else {
                     console.log('注册失败');
                     this.setData({

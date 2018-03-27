@@ -24,24 +24,107 @@ let pageObject = {
         hidden: true,
     },
     onShow: function() {
-        let isRegist=wx.getStorageSync('isRegist');
-        if(isRegist){
+        let bChangeI=getApp().globalData.bChangeI;
+        if(bChangeI){
             this.setData({
                 memberList: []
             });
             this.getMemberList();
-            wx.setStorageSync('isRegist', false);
+            getApp().globalData.bChangeI=false;
         }
     },
     onLoad:function(){
-        this.getMemberList();
+        this.wxLogin();
     },
-    getMemberList: function() {
+    isMemberRequest: function(openId) {
+        let dataObj = {
+            open_id: openId
+        }
+        wx.request({
+            url: domain + '/is_member',
+            method: 'POST',
+            data: dataObj,
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: (res) => {
+                if (res.data && res.data.code === 0) {
+                    if (res.data.data) {
+                        wx.setStorageSync('isMember', res.data.data.isMember);
+                        if (res.data.data.isMember) {
+                            this.getUser(openId);
+                        }else{
+                            this.getMemberList(-1);
+                        }
+                    }else{
+                        this.getMemberList(-1);
+                    }
+                }else{
+                    this.getMemberList(-1);
+                }
+            },
+            fail: () => {}
+        })
+    },
+    getUser: function(openId) {
+        let dataObj = {
+            open_id: openId
+        }
+        wx.request({
+            url:domain + '/getinfo_by_openid',
+            method: 'POST',
+            data: dataObj,
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: (res) => {
+                if (res.data && res.data.code === 0) {
+                    if (res.data.data) {
+                        wx.setStorageSync('gender', res.data.data.gender);
+                        getApp().globalData.userInfo = res.data.data;
+                        this.getMemberList(res.data.data.gender);
+                    }else{
+                        this.getMemberList(-1);
+                    }
+                } else if (res.data.code === -1) {
+                    this.getMemberList(-1);
+                    wx.setStorageSync('gender', -1);
+                }
+            },
+            fail: () => {}
+        })
+    },
+    wxLogin:function(){
+        wx.login({
+            success: (res) => {
+                if (res.code) {
+                    let dataObj={
+                        js_code: res.code
+                    }
+                    wx.request({
+                        url:domain + '/get_open_id',
+                        method: 'POST',
+                        data: dataObj,
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success: (res) => {
+                            wx.setStorageSync('openId', res.data.openid);
+                            this.isMemberRequest(res.data.openid);
+                        }
+                    })
+                } else {
+                    console.log('获取用户登录态失败！' + res.errMsg)
+                }
+            }
+        });
+    },
+    getMemberList: function(gender) {
         if (!this.data.unLock) {
             return;
         }
         let dataObj = {
-            gender: wx.getStorageSync('gender'),
+            gender: gender || wx.getStorageSync('gender'),
             sequence: page
         }
         if (bFlag) {
