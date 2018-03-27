@@ -57,3 +57,9 @@ swiper{
     margin-bottom: 20rpx;
     color:#666;
 }
+.search-view{
+    color: #7d7d7d;
+    font-size: 28rpx;
+    height:100%;
+    line-height: 70rpx;
+}

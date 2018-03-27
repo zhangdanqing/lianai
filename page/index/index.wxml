@@ -6,7 +6,7 @@
     <view class="search-home-box">
         <view class="search-box">
             <icon type="search" size="12" />
-            <input placeholder="请输入您要搜索的名字" placeholder-class="search-place" bindtap="searchJump" />
+            <view class="search-view" bindtap="searchJump">请输入您要搜索的名字</view>
         </view>
     </view>
 
