@@ -24,21 +24,17 @@ let pageObject = {
         hidden: true,
     },
     onShow: function() {
-        // let isRegist=wx.getStorageSync('isRegist');
-        // if(isRegist){
-        //     this.setData({
-        //         memberList: []
-        //     });
-        //     this.getMemberList();
-        //     wx.setStorageSync('isRegist', false);
-        // }
-        this.setData({
-            memberList: []
-        });
-        this.getMemberList();
+        let isRegist=wx.getStorageSync('isRegist');
+        if(isRegist){
+            this.setData({
+                memberList: []
+            });
+            this.getMemberList();
+            wx.setStorageSync('isRegist', false);
+        }
     },
     onLoad:function(){
-        //this.getMemberList();
+        this.getMemberList();
     },
     getMemberList: function() {
         if (!this.data.unLock) {
