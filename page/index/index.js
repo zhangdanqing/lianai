@@ -35,6 +35,7 @@ let pageObject = {
     },
     onLoad:function(){
         this.wxLogin();
+        this.getMemberList();
     },
     getMemberList: function() {
         if (!this.data.unLock) {
@@ -172,7 +173,6 @@ let pageObject = {
                 } else if (res.data.code === -1) {
                     wx.setStorageSync('gender', -1);
                 }
-                this.getMemberList();
             },
             fail: () => {}
         })
