@@ -11,14 +11,14 @@
             <view class="section">
                 <view class="section__title">请上传一张身份证正面照片</view>
                 <view class="upload-image-box" data-arr="idTempFilePaths" data-show="isShowAddiD" bindtap="uploadPhoto">
-                    <image wx:for="{{idTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
+                    <image wx:for="{{idTempFilePaths}}" wx:key="*this" class="upload-image" src="{{item}}"></image>
                     <image wx:if="{{isShowAddiD}}" src="../../img/add.png" class="upload-photos"></image>
                 </view>
             </view>
             <view class="section">
                 <view class="section__title">请上传最精美生活照一张</view>
                 <view class="upload-image-box" data-show="isShowAddPhoto" data-arr="checkboxTempFilePaths" bindtap="uploadPhoto">
-                    <image wx:for="{{checkboxTempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
+                    <image wx:for="{{checkboxTempFilePaths}}" wx:key="*this" class="upload-image" src="{{item}}"></image>
                     <image wx:if="{{isShowAddPhoto}}" src="../../img/add.png" class="upload-photos"></image>
                 </view>
             </view>

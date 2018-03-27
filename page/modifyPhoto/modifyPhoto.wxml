@@ -10,7 +10,7 @@
             <view class="section">
                 <view class="section__title">请上传最精美生活照一张</view>
                 <view class="upload-image-box" data-show="isShowAddPhoto" data-arr="tempFilePaths" bindtap="uploadPhoto">
-                    <image wx:for="{{tempFilePaths}}" wx:key="index" class="upload-image" src="{{item}}"></image>
+                    <image wx:for="{{tempFilePaths}}" wx:key="*this" class="upload-image" src="{{item}}"></image>
                     <image wx:if="{{isShowAddPhoto}}" src="../../img/add.png" class="upload-photos"></image>
                 </view>
             </view>

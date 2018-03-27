@@ -30,7 +30,7 @@ let pageObject = {
             name: this.data.inputSearch
         }
         wx.request({
-            url: domain + '/detail',
+            url: domain + '/getinfo_by_name',
             method: 'POST',
             data: dataObj,
             header: {
