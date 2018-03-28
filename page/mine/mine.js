@@ -12,18 +12,22 @@ let pageObject = {
                 modalHidden: false
             })
         }
+        let userInfo = getApp().globalData.userInfo;
+        if(userInfo.image){
+            this.setData({
+                headPortrait:userInfo.image
+            })
+        }
+        if(userInfo.name){
+            this.setData({
+                userName:userInfo.name
+            })
+        }
         let bChangeM=getApp().globalData.bChangeM;
         if(bChangeM){
             this.getUser();
             getApp().globalData.bChangeM=false;
         }
-    },
-    onLoad:function(){
-        let userInfo = getApp().globalData.userInfo;
-        this.setData({
-            headPortrait:userInfo.image,
-            userName:userInfo.name
-        })
     },
     modifyTap:function(){
         wx.navigateTo({
