@@ -8,17 +8,17 @@
     <view class="content">
         <form bindsubmit="formSubmit">
             <view class="section">
-                <view class="section__title">昵称</view>
+                <view class="section__title">*昵称</view>
                 <input maxlength="12" value="{{name}}" name="name" placeholder-class="placeholder" placeholder="只支持中文英文大小写和数字" />
             </view>
             <radio-group class="radio-group" bindchange="radioChange">
-                <view class="section__title">性别</view>
+                <view class="section__title">*性别</view>
                 <label class="radio" wx:for="{{genderArrary}}" wx:key="id">
                     <radio value="{{item.id}}" checked="{{item.checked}}"/>{{item.name}}
                 </label>
             </radio-group>
             <view class="section">
-                <view class="section__title">出生日期</view>
+                <view class="section__title">*出生日期</view>
                 <picker mode="date" value="{{date}}" name="date" data-key="date" bindchange="bindPickerChange">
                     <view class="picker">
                         当前选择: {{date}}
@@ -26,7 +26,7 @@
                 </picker>
             </view>
             <view class="section">
-                <view class="section__title">所在地区</view>
+                <view class="section__title">*所在地区</view>
                 <picker mode="region" data-key="addressRegion" bindchange="bindPickerChange" value="{{addressRegion}}" name="addressRegion" custom-item="{{customItem}}">
                     <view class="picker">
                         当前选择：{{addressRegion[0]}} {{addressRegion[1]}} {{addressRegion[2]}}
@@ -34,7 +34,7 @@
                 </picker>
             </view>
             <view class="section">
-                <view class="section__title">籍贯</view>
+                <view class="section__title">*籍贯</view>
                 <picker mode="region" data-key="originRegion" bindchange="bindPickerChange" value="{{originRegion}}" name="originRegion" custom-item="{{customItem}}">
                     <view class="picker">
                         当前选择：{{originRegion[0]}} {{originRegion[1]}} {{originRegion[2]}}
@@ -42,15 +42,15 @@
                 </picker>
             </view>
             <view class="section">
-                <view class="section__title">所在的行业</view>
+                <view class="section__title">*所在的行业</view>
                 <input value="{{industry}}" name="industry" placeholder-class="placeholder" placeholder="必填" />
             </view>
             <view class="section">
-                <view class="section__title">职业</view>
+                <view class="section__title">*职业</view>
                 <input value="{{occupation}}" name="occupation" placeholder-class="placeholder" placeholder="必填" />
             </view>
             <view class="section">
-                <view class="section__title">年收入</view>
+                <view class="section__title">*年收入</view>
                 <picker mode="selector" data-key="income" bindchange="bindPickerChange" value="{{income}}" name="income" range="{{incomeArray}}">
                     <view class="picker">
                         当前选择：{{incomeArray[income]}}
@@ -58,7 +58,7 @@
                 </picker>
             </view>
             <view class="section">
-                <view class="section__title">身高</view>
+                <view class="section__title">*身高</view>
                 <input value="{{height}}" name="height" placeholder-class="placeholder" placeholder="必填" />
             </view>
             <view class="section">
@@ -70,7 +70,7 @@
                 <input value="{{nation}}" name="nation" placeholder-class="placeholder" placeholder="选填" />
             </view>
             <view class="section">
-                <view class="section__title">学历</view>
+                <view class="section__title">*学历</view>
                 <picker mode="selector" data-key="education" bindchange="bindPickerChange" value="{{education}}" name="education" range="{{educationArray}}">
                     <view class="picker">
                         当前选择：{{educationArray[education]}}
@@ -82,7 +82,7 @@
                 <input value="{{school}}" name="school" placeholder-class="placeholder" placeholder="选填" />
             </view>
             <view class="section">
-                <view class="section__title">当前婚姻状况</view>
+                <view class="section__title">*当前婚姻状况</view>
                 <picker mode="selector" data-key="maritalStatus" bindchange="bindPickerChange" value="{{maritalStatus}}" name="maritalStatus" range="{{maritalArray}}">
                     <view class="picker">
                         当前选择：{{maritalArray[maritalStatus]}}
@@ -90,7 +90,7 @@
                 </picker>
             </view>
             <view class="section">
-                <view class="section__title">当地购房情况</view>
+                <view class="section__title">*当地购房情况</view>
                 <picker mode="selector" data-key="purchase" bindchange="bindPickerChange" value="{{purchase}}" name="purchase" range="{{booleanArray}}" range-key="{{'name'}}">
                     <view class="picker">
                         当前选择：{{booleanArray[purchase].name}}
@@ -98,7 +98,7 @@
                 </picker>
             </view>
             <view class="section">
-                <view class="section__title">购车情况</view>
+                <view class="section__title">*购车情况</view>
                 <picker mode="selector" data-key="carBuying" bindchange="bindPickerChange" value="{{carBuying}}" name="carBuying" range="{{booleanArray}}" range-key="{{'name'}}">
                     <view class="picker">
                         当前选择：{{booleanArray[carBuying].name}}

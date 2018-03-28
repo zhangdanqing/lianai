@@ -81,3 +81,9 @@ checkbox,.agree{
     position: relative;
     box-sizing: border-box;
 }
+.infor{
+    font-size: 30rpx;
+    padding-top: 30rpx;
+    display:block;
+    color:#444;
+}
