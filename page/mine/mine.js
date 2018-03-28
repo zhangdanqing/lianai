@@ -12,6 +12,11 @@ let pageObject = {
                 modalHidden: false
             })
         }
+        let bChangeM=getApp().globalData.bChangeM;
+        if(bChangeM){
+            this.getUser();
+            getApp().globalData.bChangeM=false;
+        }
         let userInfo = getApp().globalData.userInfo;
         if(userInfo.image){
             this.setData({
@@ -22,11 +27,6 @@ let pageObject = {
             this.setData({
                 userName:userInfo.name
             })
-        }
-        let bChangeM=getApp().globalData.bChangeM;
-        if(bChangeM){
-            this.getUser();
-            getApp().globalData.bChangeM=false;
         }
     },
     modifyTap:function(){
