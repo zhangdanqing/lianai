@@ -95,6 +95,7 @@ let pageObject = {
         })
     },
     wxLogin:function(){
+        this.loadingShow();
         wx.login({
             success: (res) => {
                 if (res.code) {
@@ -129,9 +130,7 @@ let pageObject = {
         }
         if (bFlag) {
             bFlag = false;
-            this.setData({
-                hidden: false
-            });
+            this.loadingShow();
             wx.request({
                 url: domain + '/recommendation',
                 method: 'POST',
@@ -161,13 +160,21 @@ let pageObject = {
                 },
                 complete: () => {
                     bFlag = true;
-                    this.setData({
-                        hidden: true
-                    });
+                    this.loadingHide();
                     wx.stopPullDownRefresh();
                 }
             })
         }
+    },
+    loadingShow:function(){
+        this.setData({
+            hidden: false
+        });
+    },
+    loadingHide:function(){
+        this.setData({
+            hidden: true
+        });
     },
     onReachBottom: function() {
         page++;
